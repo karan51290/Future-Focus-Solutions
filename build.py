@@ -39,12 +39,13 @@ OUTPUT_PATHS = {
     "about": "about/index.html",
     "services": "services/index.html",
     "financial-planning": "services/financial-planning/index.html",
+    "mutual-funds": "services/mutual-funds/index.html",
     "retirement-tax-planning": "services/retirement-tax-planning/index.html",
     "insurance": "services/insurance/index.html",
     "loans": "services/loans/index.html",
     "real-estate": "services/real-estate/index.html",
     "debt-collection-recovery": "services/debt-collection-recovery/index.html",
-    "testimonials": "testimonials/index.html",
+    "market-insights": "market-insights/index.html",
     "contact": "contact/index.html",
     "privacy-policy": "privacy-policy/index.html",
     "terms-and-conditions": "terms-and-conditions/index.html",
@@ -52,6 +53,7 @@ OUTPUT_PATHS = {
 
 SERVICE_KEYS = [
     ("financial-planning", "Financial Planning"),
+    ("mutual-funds", "Mutual Funds"),
     ("retirement-tax-planning", "Retirement &amp; Tax Planning"),
     ("insurance", "Insurance"),
     ("loans", "Loans"),
@@ -63,7 +65,7 @@ TOP_NAV = [
     ("home", "Home"),
     ("about", "About Us"),
     # "services" handled separately as a dropdown
-    ("testimonials", "Testimonials"),
+    ("market-insights", "Market Insights"),
     ("contact", "Contact"),
 ]
 
@@ -164,7 +166,7 @@ def desktop_nav(page_key, active_service=None):
         </div>
       </div>''')
 
-    for key, label in TOP_NAV[2:]:  # Testimonials, Contact
+    for key, label in TOP_NAV[2:]:  # Market Insights, Contact
         cls = "text-sm font-medium text-white transition-colors" if key == page_key else "text-sm font-medium hover:text-white transition-colors"
         parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
 
@@ -179,7 +181,7 @@ def mobile_nav(page_key, active_service=None):
     for skey, slabel in SERVICE_KEYS:
         cls = "mobile-link text-primary font-semibold border-b border-hairline-on-dark py-3 pl-4 text-sm" if skey == active_service else "mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm"
         parts.append(f'<a href="{rel(page_key, skey)}" class="{cls}">{slabel}</a>')
-    for key, label in [("testimonials", "Testimonials"), ("contact", "Contact")]:
+    for key, label in [("market-insights", "Market Insights"), ("contact", "Contact")]:
         parts.append(f'<a href="{rel(page_key, key)}" class="mobile-link text-white border-b border-hairline-on-dark py-4">{label}</a>')
     return "\n    ".join(parts)
 
@@ -315,7 +317,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
     <div class="col-span-2 flex flex-col justify-between">
       <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-20 md:h-24 w-auto self-start">
       <div>
-        <p class="text-[13px] text-muted-on-light max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} is a Chennai-based financial services team covering planning, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across five different advisors.</p>
+        <p class="text-[13px] text-muted-on-light max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} is a Chennai-based financial services team covering planning, mutual funds, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across six different advisors.</p>
         <div class="flex gap-4">
           <a href="{BUSINESS['social']['facebook']}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
           <a href="{BUSINESS['social']['instagram']}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -327,7 +329,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
       <ul class="space-y-3">
         <li><a href="{a('about')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">About Us</a></li>
         <li><a href="{a('services')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Services</a></li>
-        <li><a href="{a('testimonials')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Testimonials</a></li>
+        <li><a href="{a('market-insights')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Market Insights</a></li>
         <li><a href="{a('contact')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Contact</a></li>
       </ul>
     </div>
@@ -423,18 +425,21 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 # Page registry: key -> (title, meta description, whatsapp fab message, active_service)
 # ---------------------------------------------------------------------------
 PAGES = [
-    ("home", f"{BUSINESS['name']} - Financial Planning, Insurance, Loans, Real Estate & Debt Recovery in Chennai",
-     "One team across financial planning, retirement &amp; tax planning, insurance, loans, real estate, and debt recovery in Chennai. Book a free consultation.",
+    ("home", f"{BUSINESS['name']} - Financial Planning, Mutual Funds, Insurance, Loans, Real Estate & Debt Recovery in Chennai",
+     "One team across financial planning, mutual funds, retirement &amp; tax planning, insurance, loans, real estate, and debt recovery in Chennai. Book a free consultation.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("about", f"About Us - {BUSINESS['name']}",
-     f"One team across financial planning, insurance, loans, real estate, and debt recovery in Chennai - meet {BUSINESS['name']}.",
+     f"One team across financial planning, mutual funds, insurance, loans, real estate, and debt recovery in Chennai - meet {BUSINESS['name']}.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("services", f"Services - {BUSINESS['name']}",
-     "Six services, one team, one plan: financial planning, retirement & tax planning, insurance, loans, real estate, and debt recovery.",
+     "Seven services, one team, one plan: financial planning, mutual funds, retirement & tax planning, insurance, loans, real estate, and debt recovery.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about your services.", None),
     ("financial-planning", f"Financial Planning - {BUSINESS['name']}",
      "One plan for your income, savings, investments, and goals - not a different answer from every product you ask about.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about Financial Planning.", "financial-planning"),
+    ("mutual-funds", f"Mutual Funds - {BUSINESS['name']}",
+     "Fund selection matched to your goals and timeline, with plain answers about risk, cost, and what you're actually invested in.",
+     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Mutual Funds.", "mutual-funds"),
     ("retirement-tax-planning", f"Retirement &amp; Tax Planning - {BUSINESS['name']}",
      "Build the income you'll need later, and keep more of what you earn now.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about Retirement & Tax Planning.", "retirement-tax-planning"),
@@ -450,8 +455,8 @@ PAGES = [
     ("debt-collection-recovery", f"Debt Collection &amp; Recovery - {BUSINESS['name']}",
      "Structured, compliant recovery for secured and unsecured accounts - for businesses and lenders.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about Debt Collection & Recovery.", "debt-collection-recovery"),
-    ("testimonials", f"Testimonials - {BUSINESS['name']}",
-     "What clients say, in their own words.",
+    ("market-insights", f"Market Insights - {BUSINESS['name']}",
+     "Stocks and commodities - what's moving, in plain language.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("contact", f"Contact Us - {BUSINESS['name']}",
      "One free consultation. Tell us what you're trying to solve.",

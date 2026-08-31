@@ -28,6 +28,13 @@
     "usage": "Financial Planning service page"
   },
   {
+    "filename": "service-mutual-funds.jpg",
+    "photographer": "Towfiqu barbhuiya",
+    "source_url": "https://unsplash.com/photos/a-glass-jar-filled-with-coins-and-a-plant-joqWSI9u_XM",
+    "alt_text": "Photo by Towfiqu barbhuiya on Unsplash - A glass jar filled with coins with a small plant growing from it",
+    "usage": "Mutual Funds service page"
+  },
+  {
     "filename": "service-retirement-tax.jpg",
     "photographer": "Vitaly Gariev",
     "source_url": "https://unsplash.com/photos/elderly-couple-reviewing-documents-at-home-DQdilc0v6u8",
@@ -61,6 +68,13 @@
     "source_url": "https://unsplash.com/photos/business-professionals-in-a-meeting-around-a-table-5txln04Cx7I",
     "alt_text": "Photo by Vitaly Gariev on Unsplash - Business professionals in a formal meeting around a table",
     "usage": "Debt Recovery service page (B2B, professional meeting context)"
+  },
+  {
+    "filename": "market-insights-stocks.jpg",
+    "photographer": "Markus Winkler",
+    "source_url": "https://unsplash.com/photos/stock-market-chart-displayed-on-laptop-screen-IrRbSND5EUc",
+    "alt_text": "Photo by Markus Winkler on Unsplash - Stock market chart displayed on a laptop screen",
+    "usage": "Market Insights page hero"
   },
   {
     "filename": "contact-office.jpg",
