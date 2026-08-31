@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance - Future Focus Solutions</title>
+<meta name="description" content="Cover for your health, your life, your vehicle, your home, and your business - matched to what you actually need.">
+<link rel="icon" type="image/png" href="../../assets/logo/icon-color.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#FBBE07',
+          'primary-active': '#E0A800',
+          'primary-disabled': '#4A430F',
+          'canvas-dark': '#0A1F16',
+          'canvas-light': '#FFFFFF',
+          'surface-card-dark': '#12291D',
+          'surface-elevated-dark': '#1B3A28',
+          'surface-soft-light': '#FAFAF5',
+          'surface-strong-light': '#F2F0E6',
+          ink: '#0F1A14',
+          body: '#E7ECE8',
+          'body-on-light': '#0F1A14',
+          muted: '#8AA398',
+          'muted-strong': '#A9BFB2',
+          'muted-on-light': '#4B6358',
+          'hairline-on-dark': '#1B3A28',
+          'hairline-on-light': '#E4E7E2',
+          emerald: '#2D834D',
+          'on-primary': '#0F1A14',
+          info: '#3b82f6',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        spacing: { section: '80px' },
+        borderRadius: { xl2: '14px' },
+      }
+    }
+  }
+</script>
+<style>
+  .header-transition{transition:transform .35s ease, background-color .3s ease, box-shadow .3s ease}
+  .header-hidden{transform:translateY(-100%)}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+  ::selection{background:#FBBE07;color:#0F1A14}
+</style>
+</head>
+<body class="bg-canvas-dark text-body font-sans antialiased overflow-x-hidden">
+
+<div class="bg-surface-card-dark text-muted-strong text-[13px] hidden sm:block">
+  <div class="max-w-[1280px] mx-auto px-6 h-10 flex items-center justify-end gap-6">
+    <a href="mailto:support@futurefocussolutions.in" class="hover:text-primary transition-colors flex items-center gap-2">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6 12 13 2 6" stroke-width="2" fill="none"/><path d="M2 6h20v12H2z" fill="none" stroke-width="2"/></svg>
+      support@futurefocussolutions.in
+    </a>
+    <a href="tel:+917550102391" class="hover:text-primary transition-colors flex items-center gap-2">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +91 7550102391
+    </a>
+  </div>
+</div>
+
+<header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas-dark border-b border-hairline-on-dark header-transition">
+  <div class="max-w-[1280px] mx-auto w-full px-6 h-[88px] flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center shrink-0">
+      <img src="../../assets/logo/logo-white.png" alt="Future Focus Solutions logo" class="h-14 md:h-16 w-auto hidden sm:block">
+      <img src="../../assets/logo/icon-white.png" alt="Future Focus Solutions logo" class="h-12 w-auto sm:hidden">
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="../../index.html" class="text-sm font-medium hover:text-white transition-colors">Home</a>
+      <a href="../../about/index.html" class="text-sm font-medium hover:text-white transition-colors">About Us</a>
+      <div class="relative group">
+        <button class="text-sm font-medium text-white transition-colors flex items-center gap-1">
+          Services
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 shadow-2xl py-2 w-64">
+            <a href="../financial-planning/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Financial Planning</a><a href="../retirement-tax-planning/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Retirement &amp; Tax Planning</a><a href="index.html" class="block px-5 py-2.5 text-sm text-primary font-semibold hover:bg-surface-elevated-dark transition-colors">Insurance</a><a href="../loans/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Loans</a><a href="../real-estate/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Real Estate</a><a href="../debt-collection-recovery/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Debt Collection &amp; Recovery</a>
+            <div class="border-t border-hairline-on-dark mt-2 pt-2">
+              <a href="../index.html" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-elevated-dark transition-colors">All Services →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="../../testimonials/index.html" class="text-sm font-medium hover:text-white transition-colors">Testimonials</a>
+      <a href="../../contact/index.html" class="text-sm font-medium hover:text-white transition-colors">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="../../contact/index.html" class="hidden lg:flex bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-6 py-3 rounded-md transition-colors h-[44px] items-center">
+        Book a Free Consultation
+      </a>
+      <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Open menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="fixed inset-0 bg-canvas-dark z-[60] transform translate-x-full transition-transform duration-300 pt-6 px-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <img src="../../assets/logo/logo-white.png" alt="Future Focus Solutions logo" class="h-11 w-auto">
+    <button id="mobile-menu-close" class="text-white p-2" aria-label="Close menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-medium">
+    <a href="../../index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Home</a>
+    <a href="../../about/index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">About Us</a>
+    <a href="../index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Services</a>
+    <a href="../financial-planning/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Financial Planning</a>
+    <a href="../retirement-tax-planning/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Retirement &amp; Tax Planning</a>
+    <a href="index.html" class="mobile-link text-primary font-semibold border-b border-hairline-on-dark py-3 pl-4 text-sm">Insurance</a>
+    <a href="../loans/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Loans</a>
+    <a href="../real-estate/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Real Estate</a>
+    <a href="../debt-collection-recovery/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Debt Collection &amp; Recovery</a>
+    <a href="../../testimonials/index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Testimonials</a>
+    <a href="../../contact/index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Contact</a>
+    <a href="../../contact/index.html" class="mobile-link bg-primary text-on-primary font-semibold text-center rounded-md py-3.5 mt-6">Book a Free Consultation</a>
+    <a href="tel:+917550102391" class="mobile-link text-primary mt-6 font-semibold text-center">+91 7550102391</a>
+  </nav>
+</div>
+
+<main>
+<!-- Hero / Intro Section -->
+  <section class="bg-canvas-dark border-b border-hairline-on-dark py-16 md:py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div class="reveal mb-10">
+        <h1 class="text-white text-[42px] md:text-[56px] font-bold leading-[1.15] mb-4">Insurance</h1>
+        <p class="text-body text-[18px] md:text-[20px] leading-[1.6] max-w-3xl">Cover for your health, your life, your vehicle, your home, and your business - matched to what you actually need.</p>
+      </div>
+      <div class="reveal bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-8 md:p-10 italic" style="transition-delay:80ms">
+        <p class="text-body text-[16px] md:text-[17px] leading-[1.7] text-white">Insurance is where people most often end up either over-insured on things that don't matter or under-insured on the one thing that would actually hurt. We walk through your situation and help you figure out what's worth paying for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Image Section -->
+  <section class="bg-surface-card-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div class="reveal aspect-[16/9] rounded-xl2 overflow-hidden shadow-xl">
+        <img src="../../assets/images/service-insurance.jpg" alt="Photo by Ram Palaparty on Unsplash - Two people sharing an umbrella together, symbolizing protection and coverage" class="w-full h-full object-cover object-bottom">
+      </div>
+    </div>
+  </section>
+
+  <!-- Insurance Categories -->
+  <section class="bg-canvas-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Health Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Health Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Individual health insurance</span></span>
+            <span> - coverage for your medical expenses, so a hospital bill doesn't become a financial setback</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Family health insurance</span></span>
+            <span> - one plan covering medical costs for your entire family</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Critical illness insurance</span></span>
+            <span> - a lump sum on diagnosis of specified illnesses, to cover costs your regular health policy won't</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-card-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Life Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Life Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Term life insurance</span></span>
+            <span> - affordable cover that protects your family financially for a defined period</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Whole life insurance</span></span>
+            <span> - lifetime protection with a savings component built in</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Unit Linked Insurance Plans (ULIPs)</span></span>
+            <span> - life cover combined with investment, for those who understand and want that trade-off</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Auto Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Auto Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Third-party liability insurance</span></span>
+            <span> - legally mandatory cover for damage or injury caused to others</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Comprehensive car insurance</span></span>
+            <span> - protection against accidents, theft, and non-collision damage like flooding or fire</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Two-wheeler insurance</span></span>
+            <span> - cover for your bike or scooter against theft and accidents</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-card-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Travel Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Travel Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Domestic travel insurance</span></span>
+            <span> - medical emergencies, trip cancellations, and baggage loss within India</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">International travel insurance</span></span>
+            <span> - medical expenses, trip interruptions, and lost luggage abroad</span>
+          </li>
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Student travel insurance</span></span>
+            <span> - cover for students studying overseas</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Home Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Home Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Homeowners insurance</span></span>
+            <span> - protection for your home, belongings, and liability</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-card-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Property Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Property Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-primary font-bold flex-shrink-0 min-w-fit"><span class="font-semibold">Commercial property insurance</span></span>
+            <span> - cover for your business's buildings, equipment, and inventory</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Commercial Vehicle Insurance -->
+      <div class="reveal mb-16">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">Commercial Vehicle Insurance</h2>
+        <ul class="space-y-3">
+          <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
+            <span class="text-body text-[15px] md:text-[16px] leading-[1.6]">Cover for vehicles used for business purposes, including damage and third-party liability</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Choose Section -->
+  <section class="bg-surface-card-dark border-b border-hairline-on-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div class="reveal mb-10">
+        <h2 class="text-white text-[28px] md:text-[32px] font-bold mb-6">How to choose the right cover</h2>
+        <p class="text-body text-[16px] md:text-[17px] leading-[1.7]">The honest answer is usually: enough term life insurance to replace your income for your dependents' sake, a health policy that covers your actual likely hospital costs (not the cheapest premium), and cover for anything you couldn't afford to replace out of pocket. We'll walk through your specific situation rather than sell you a bundle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA Band -->
+  <section class="bg-canvas-dark py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div class="reveal bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="text-center md:text-left">
+          <h2 class="text-white text-[26px] md:text-[32px] font-bold leading-[1.2] mb-3">Not sure if you're over-insured, under-insured, or paying for the wrong things?</h2>
+          <p class="text-body text-[16px]">Book a free policy review.</p>
+        </div>
+        <a href="../../contact/index.html" class="shrink-0 bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-full transition-colors">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-surface-soft-light text-body-on-light">
+  <div class="max-w-[1280px] mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+    <div class="col-span-2 flex flex-col justify-between">
+      <img src="../../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-20 md:h-24 w-auto self-start">
+      <div>
+        <p class="text-[13px] text-muted-on-light max-w-sm leading-[1.6] mb-6">Future Focus Solutions is a Chennai-based financial services team covering planning, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across five different advisors.</p>
+        <div class="flex gap-4">
+          <a href="https://www.facebook.com/people/Futurefocus-Solutions/61560132209162/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/futurefocussolutions_1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-semibold text-[14px] mb-4">Quick Links</h4>
+      <ul class="space-y-3">
+        <li><a href="../../about/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">About Us</a></li>
+        <li><a href="../index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Services</a></li>
+        <li><a href="../../testimonials/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Testimonials</a></li>
+        <li><a href="../../contact/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold text-[14px] mb-4">Services</h4>
+      <ul class="space-y-3">
+        <li><a href="../financial-planning/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Financial Planning</a></li><li><a href="../retirement-tax-planning/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Retirement &amp; Tax Planning</a></li><li><a href="index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Insurance</a></li><li><a href="../loans/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Loans</a></li><li><a href="../real-estate/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Real Estate</a></li><li><a href="../debt-collection-recovery/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Debt Collection &amp; Recovery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold text-[14px] mb-4">Contact</h4>
+      <ul class="space-y-3 text-[13px] text-muted-on-light leading-[1.6]">
+        <li>Future Focus Solutions</li>
+        <li>No.65/2, Thambiah Road, West Mambalam, Chennai – 600 033, Tamil Nadu, India</li>
+        <li><a href="tel:+917550102391" class="hover:text-emerald transition-colors">+91 7550102391</a></li>
+        <li>WhatsApp: <a href="https://wa.me/919176049030" class="hover:text-emerald transition-colors">+91 91760 49030</a></li>
+        <li><a href="mailto:support@futurefocussolutions.in" class="hover:text-emerald transition-colors">support@futurefocussolutions.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto px-6 pb-8">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline-on-light text-[12px] text-muted-on-light">
+      <p>© Future Focus Solutions 2026. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="../../privacy-policy/index.html" class="hover:text-emerald transition-colors">Privacy Policy</a>
+        <a href="../../terms-and-conditions/index.html" class="hover:text-emerald transition-colors">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 flex flex-col gap-3">
+  <button id="scroll-top" aria-label="Scroll to top" class="w-11 h-11 md:w-12 md:h-12 bg-surface-card-dark border border-hairline-on-dark rounded-full flex items-center justify-center text-white hover:bg-surface-elevated-dark transition-all opacity-0 translate-y-4 pointer-events-none shadow-lg">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <a href="tel:+917550102391" aria-label="Call us" class="w-11 h-11 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center text-on-primary hover:scale-105 transition-transform shadow-lg">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/919176049030?text=Hi+Future+Focus+Solutions%21+I%27d+like+to+talk+to+someone+about+Insurance." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="w-11 h-11 md:w-12 md:h-12 bg-emerald rounded-full flex items-center justify-center text-white hover:scale-105 transition-transform shadow-lg">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+</div>
+
+<script src="../../js/business-config.js"></script>
+<script>
+  (function(){
+    let lastScroll = 0;
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      const cur = window.pageYOffset;
+      if (cur <= 0) { header.classList.remove('header-hidden'); return; }
+      if (cur > lastScroll && cur > 120) header.classList.add('header-hidden');
+      else header.classList.remove('header-hidden');
+      lastScroll = cur;
+    }, { passive: true });
+  })();
+
+  (function(){
+    const btn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) btn.classList.remove('opacity-0','translate-y-4','pointer-events-none');
+      else btn.classList.add('opacity-0','translate-y-4','pointer-events-none');
+    }, { passive: true });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+
+  (function(){
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const menu = document.getElementById('mobile-menu');
+    const links = document.querySelectorAll('.mobile-link');
+    function open(){ menu.classList.remove('translate-x-full'); document.body.classList.add('overflow-hidden'); }
+    function close(){ menu.classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden'); }
+    btn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    links.forEach(l => l.addEventListener('click', close));
+  })();
+
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+[
+  {
+    "filename": "hero-home.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/two-people-collaborating-at-a-desk-with-a-laptop-FXVt6t0tkmI",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Advisor and client reviewing a laptop together during a professional consultation",
+    "usage": "Home page hero"
+  },
+  {
+    "filename": "about-team.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/two-women-talking-at-a-desk-in-an-office-aoweP90-XwM",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Two colleagues talking and reviewing a laptop screen together in a modern office",
+    "usage": "About page team section"
+  },
+  {
+    "filename": "about-history.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/two-colleagues-reviewing-documents-at-an-office-desk-zQXdDfmkevA",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Two colleagues reviewing documents together at an office desk",
+    "usage": "About page how-we're-different / planning session section"
+  },
+  {
+    "filename": "service-financial-planning.jpg",
+    "photographer": "Jakub Żerdzicki",
+    "source_url": "https://unsplash.com/photos/office-desk-with-smartphone-and-financial-charts-heiYgqp0Tsk",
+    "alt_text": "Photo by Jakub Żerdzicki on Unsplash - Office desk with a smartphone and financial charts laid out for review",
+    "usage": "Financial Planning service page"
+  },
+  {
+    "filename": "service-retirement-tax.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/elderly-couple-reviewing-documents-at-home-DQdilc0v6u8",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Elderly couple reviewing financial documents together at home",
+    "usage": "Retirement & Tax Planning service page"
+  },
+  {
+    "filename": "service-insurance.jpg",
+    "photographer": "Ram Palaparty",
+    "source_url": "https://unsplash.com/photos/couple-under-umbrella-_xuhBShCOpQ",
+    "alt_text": "Photo by Ram Palaparty on Unsplash - Two people sharing an umbrella together, symbolizing protection and coverage",
+    "usage": "Insurance service page"
+  },
+  {
+    "filename": "service-loans.jpg",
+    "photographer": "yahdi yasya",
+    "source_url": "https://unsplash.com/photos/hands-exchanging-a-car-key-against-a-light-background-iDSsOlqFa8w",
+    "alt_text": "Photo by yahdi yasya on Unsplash - Hands exchanging a car key, symbolizing a new loan-financed purchase",
+    "usage": "Loans service page"
+  },
+  {
+    "filename": "service-real-estate.jpg",
+    "photographer": "Aalo Lens",
+    "source_url": "https://unsplash.com/photos/modern-house-with-large-windows-and-lush-garden-eWOgoFHlE8g",
+    "alt_text": "Photo by Aalo Lens on Unsplash - Modern house exterior with large windows and a lush garden",
+    "usage": "Real Estate service page"
+  },
+  {
+    "filename": "service-debt-recovery.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/business-professionals-in-a-meeting-around-a-table-5txln04Cx7I",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Business professionals in a formal meeting around a table",
+    "usage": "Debt Recovery service page (B2B, professional meeting context)"
+  },
+  {
+    "filename": "contact-office.jpg",
+    "photographer": "Aalo Lens",
+    "source_url": "https://unsplash.com/photos/modern-lobby-with-marble-reception-desk-and-plants-pt0nGH-NvoA",
+    "alt_text": "Photo by Aalo Lens on Unsplash - Modern office lobby with a marble reception desk and plants",
+    "usage": "Contact page office section"
+  },
+  {
+    "filename": "feature-planning-session.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/diverse-team-collaborates-around-a-table-in-office-fm4B1xWEIsU",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Diverse team collaborating around a table in an office",
+    "usage": "Supporting card imagery across service pages (planning session)"
+  },
+  {
+    "filename": "feature-document-review.jpg",
+    "photographer": "Kelly Sikkema",
+    "source_url": "https://unsplash.com/photos/person-reviewing-documents-with-calculator-and-laptop-0oZpRxG5Hkk",
+    "alt_text": "Photo by Kelly Sikkema on Unsplash - Person reviewing documents with a calculator and laptop",
+    "usage": "Supporting card imagery across service pages (document review)"
+  },
+  {
+    "filename": "feature-consultation.jpg",
+    "photographer": "Vitaly Gariev",
+    "source_url": "https://unsplash.com/photos/colleagues-collaborating-at-a-modern-office-desk-0iTp1WNlMGc",
+    "alt_text": "Photo by Vitaly Gariev on Unsplash - Two colleagues in discussion at a modern office desk",
+    "usage": "Supporting card imagery across service pages (advisor-client consultation)"
+  }
+]
