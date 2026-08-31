@@ -45,7 +45,7 @@ OUTPUT_PATHS = {
     "loans": "services/loans/index.html",
     "real-estate": "services/real-estate/index.html",
     "debt-collection-recovery": "services/debt-collection-recovery/index.html",
-    "testimonials": "testimonials/index.html",
+    "market-insights": "market-insights/index.html",
     "contact": "contact/index.html",
     "privacy-policy": "privacy-policy/index.html",
     "terms-and-conditions": "terms-and-conditions/index.html",
@@ -65,7 +65,7 @@ TOP_NAV = [
     ("home", "Home"),
     ("about", "About Us"),
     # "services" handled separately as a dropdown
-    ("testimonials", "Testimonials"),
+    ("market-insights", "Market Insights"),
     ("contact", "Contact"),
 ]
 
@@ -166,7 +166,7 @@ def desktop_nav(page_key, active_service=None):
         </div>
       </div>''')
 
-    for key, label in TOP_NAV[2:]:  # Testimonials, Contact
+    for key, label in TOP_NAV[2:]:  # Market Insights, Contact
         cls = "text-sm font-medium text-white transition-colors" if key == page_key else "text-sm font-medium hover:text-white transition-colors"
         parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
 
@@ -181,7 +181,7 @@ def mobile_nav(page_key, active_service=None):
     for skey, slabel in SERVICE_KEYS:
         cls = "mobile-link text-primary font-semibold border-b border-hairline-on-dark py-3 pl-4 text-sm" if skey == active_service else "mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm"
         parts.append(f'<a href="{rel(page_key, skey)}" class="{cls}">{slabel}</a>')
-    for key, label in [("testimonials", "Testimonials"), ("contact", "Contact")]:
+    for key, label in [("market-insights", "Market Insights"), ("contact", "Contact")]:
         parts.append(f'<a href="{rel(page_key, key)}" class="mobile-link text-white border-b border-hairline-on-dark py-4">{label}</a>')
     return "\n    ".join(parts)
 
@@ -329,7 +329,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
       <ul class="space-y-3">
         <li><a href="{a('about')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">About Us</a></li>
         <li><a href="{a('services')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Services</a></li>
-        <li><a href="{a('testimonials')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Testimonials</a></li>
+        <li><a href="{a('market-insights')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Market Insights</a></li>
         <li><a href="{a('contact')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Contact</a></li>
       </ul>
     </div>
@@ -455,8 +455,8 @@ PAGES = [
     ("debt-collection-recovery", f"Debt Collection &amp; Recovery - {BUSINESS['name']}",
      "Structured, compliant recovery for secured and unsecured accounts - for businesses and lenders.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about Debt Collection & Recovery.", "debt-collection-recovery"),
-    ("testimonials", f"Testimonials - {BUSINESS['name']}",
-     "What clients say, in their own words.",
+    ("market-insights", f"Market Insights - {BUSINESS['name']}",
+     "Stocks and commodities - what's moving, in plain language.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("contact", f"Contact Us - {BUSINESS['name']}",
      "One free consultation. Tell us what you're trying to solve.",
