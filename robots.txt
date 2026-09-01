@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /services/retirement-tax-planning/
+Disallow: /services/loans/
+Disallow: /services/real-estate/
+Disallow: /services/debt-collection-recovery/

@@ -4,44 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services - Future Focus Solutions</title>
-<meta name="description" content="Seven services, one team, one plan: financial planning, mutual funds, retirement & tax planning, insurance, loans, real estate, and debt recovery.">
+<meta name="description" content="Three services, one team, one plan: financial planning, mutual funds, and insurance.">
 <link rel="icon" type="image/png" href="../assets/logo/icon-color.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Outfit:wght@500;600&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          primary: '#FBBE07',
-          'primary-active': '#E0A800',
-          'primary-disabled': '#4A430F',
-          'canvas-dark': '#0A1F16',
+          primary: '#04442C',
+          'primary-active': '#033523',
+          'primary-disabled': '#B9C7BE',
+          canvas: '#FFFAF0',
           'canvas-light': '#FFFFFF',
-          'surface-card-dark': '#12291D',
-          'surface-elevated-dark': '#1B3A28',
-          'surface-soft-light': '#FAFAF5',
-          'surface-strong-light': '#F2F0E6',
-          ink: '#0F1A14',
-          body: '#E7ECE8',
-          'body-on-light': '#0F1A14',
-          muted: '#8AA398',
-          'muted-strong': '#A9BFB2',
-          'muted-on-light': '#4B6358',
-          'hairline-on-dark': '#1B3A28',
-          'hairline-on-light': '#E4E7E2',
+          'surface-card': '#F5F0E0',
+          'surface-strong': '#ECE3C8',
+          'surface-soft': '#FAF5E8',
+          'surface-form': '#FFFFFF',
+          ink: '#14261D',
+          body: '#3E4A43',
+          muted: '#6C7A72',
+          'muted-strong': '#33453A',
+          hairline: '#E7E0C8',
           emerald: '#2D834D',
-          'on-primary': '#0F1A14',
+          'on-primary': '#FFFFFF',
           info: '#3b82f6',
         },
         fontFamily: {
           sans: ['Inter', 'sans-serif'],
-          mono: ['JetBrains Mono', 'monospace'],
+          display: ['Outfit', 'sans-serif'],
         },
         spacing: { section: '80px' },
-        borderRadius: { xl2: '14px' },
       }
     }
   }
@@ -53,12 +49,12 @@
   .reveal.in-view{opacity:1;transform:translateY(0)}
   .no-scrollbar::-webkit-scrollbar{display:none}
   .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
-  ::selection{background:#FBBE07;color:#0F1A14}
+  ::selection{background:#FBBE07;color:#14261D}
 </style>
 </head>
-<body class="bg-canvas-dark text-body font-sans antialiased overflow-x-hidden">
+<body class="bg-canvas text-body font-sans antialiased overflow-x-hidden">
 
-<div class="bg-surface-card-dark text-muted-strong text-[13px] hidden sm:block">
+<div class="bg-surface-soft text-muted-strong text-[13px] hidden sm:block">
   <div class="max-w-[1280px] mx-auto px-6 h-10 flex items-center justify-end gap-6">
     <a href="mailto:support@futurefocussolutions.in" class="hover:text-primary transition-colors flex items-center gap-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6 12 13 2 6" stroke-width="2" fill="none"/><path d="M2 6h20v12H2z" fill="none" stroke-width="2"/></svg>
@@ -71,65 +67,74 @@
   </div>
 </div>
 
-<header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas-dark border-b border-hairline-on-dark header-transition">
+<header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas border-b border-hairline header-transition">
   <div class="max-w-[1280px] mx-auto w-full px-6 h-[88px] flex items-center justify-between">
     <a href="../index.html" class="flex items-center shrink-0">
-      <img src="../assets/logo/logo-white.png" alt="Future Focus Solutions logo" class="h-14 md:h-16 w-auto hidden sm:block">
-      <img src="../assets/logo/icon-white.png" alt="Future Focus Solutions logo" class="h-12 w-auto sm:hidden">
+      <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-14 md:h-16 w-auto hidden sm:block">
+      <img src="../assets/logo/icon-color.png" alt="Future Focus Solutions logo" class="h-12 w-auto sm:hidden">
     </a>
 
     <nav class="hidden lg:flex items-center gap-8">
-      <a href="../index.html" class="text-sm font-medium hover:text-white transition-colors">Home</a>
-      <a href="../about/index.html" class="text-sm font-medium hover:text-white transition-colors">About Us</a>
+      <a href="../index.html" class="text-sm font-medium text-body hover:text-ink transition-colors">Home</a>
+      <a href="../about/index.html" class="text-sm font-medium text-body hover:text-ink transition-colors">About Us</a>
       <div class="relative group">
-        <button class="text-sm font-medium text-white transition-colors flex items-center gap-1">
+        <button class="text-sm font-medium text-body hover:text-ink transition-colors flex items-center gap-1">
           Services
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-          <div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 shadow-2xl py-2 w-64">
-            <a href="financial-planning/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Financial Planning</a><a href="mutual-funds/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Mutual Funds</a><a href="retirement-tax-planning/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Retirement &amp; Tax Planning</a><a href="insurance/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Insurance</a><a href="loans/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Loans</a><a href="real-estate/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Real Estate</a><a href="debt-collection-recovery/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors">Debt Collection &amp; Recovery</a>
-            <div class="border-t border-hairline-on-dark mt-2 pt-2">
-              <a href="index.html" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-elevated-dark transition-colors">All Services →</a>
+          <div class="bg-surface-card border border-hairline rounded-xl shadow-2xl py-2 w-64">
+            <a href="financial-planning/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Financial Planning</a><a href="mutual-funds/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Mutual Funds</a><a href="insurance/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Insurance</a>
+            <div class="border-t border-hairline mt-2 pt-2">
+              <a href="index.html" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-strong transition-colors">All Services →</a>
             </div>
           </div>
         </div>
       </div>
-      <a href="../market-insights/index.html" class="text-sm font-medium hover:text-white transition-colors">Market Insights</a>
-      <a href="../contact/index.html" class="text-sm font-medium hover:text-white transition-colors">Contact</a>
+      <div class="relative group">
+        <button class="text-sm font-medium text-body hover:text-ink transition-colors flex items-center gap-1">
+          Market Insights
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-surface-card border border-hairline rounded-xl shadow-2xl py-2 w-64">
+            <a href="../market-insights/index.html#stocks" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Stocks</a><a href="../market-insights/index.html#commodities" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Commodities</a>
+            
+          </div>
+        </div>
+      </div>
+      <a href="../contact/index.html" class="text-sm font-medium text-body hover:text-ink transition-colors">Contact Us</a>
     </nav>
 
     <div class="flex items-center gap-4">
       <a href="../contact/index.html" class="hidden lg:flex bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-6 py-3 rounded-md transition-colors h-[44px] items-center">
         Book a Free Consultation
       </a>
-      <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Open menu">
+      <button id="mobile-menu-btn" class="lg:hidden text-ink p-2" aria-label="Open menu">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<div id="mobile-menu" class="fixed inset-0 bg-canvas-dark z-[60] transform translate-x-full transition-transform duration-300 pt-6 px-6 overflow-y-auto">
+<div id="mobile-menu" class="fixed inset-0 bg-canvas z-[60] transform translate-x-full transition-transform duration-300 pt-6 px-6 overflow-y-auto">
   <div class="flex items-center justify-between mb-8">
-    <img src="../assets/logo/logo-white.png" alt="Future Focus Solutions logo" class="h-11 w-auto">
-    <button id="mobile-menu-close" class="text-white p-2" aria-label="Close menu">
+    <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-11 w-auto">
+    <button id="mobile-menu-close" class="text-ink p-2" aria-label="Close menu">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <nav class="flex flex-col gap-1 text-base font-medium">
-    <a href="../index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Home</a>
-    <a href="../about/index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">About Us</a>
-    <a href="index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Services</a>
-    <a href="financial-planning/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Financial Planning</a>
-    <a href="mutual-funds/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Mutual Funds</a>
-    <a href="retirement-tax-planning/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Retirement &amp; Tax Planning</a>
-    <a href="insurance/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Insurance</a>
-    <a href="loans/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Loans</a>
-    <a href="real-estate/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Real Estate</a>
-    <a href="debt-collection-recovery/index.html" class="mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm">Debt Collection &amp; Recovery</a>
-    <a href="../market-insights/index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Market Insights</a>
-    <a href="../contact/index.html" class="mobile-link text-white border-b border-hairline-on-dark py-4">Contact</a>
+    <a href="../index.html" class="mobile-link text-ink border-b border-hairline py-4">Home</a>
+    <a href="../about/index.html" class="mobile-link text-ink border-b border-hairline py-4">About Us</a>
+    <a href="index.html" class="mobile-link text-ink border-b border-hairline py-4">Services</a>
+    <a href="financial-planning/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Financial Planning</a>
+    <a href="mutual-funds/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Mutual Funds</a>
+    <a href="insurance/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Insurance</a>
+    <a href="../market-insights/index.html" class="mobile-link text-ink border-b border-hairline py-4">Market Insights</a>
+    <a href="../market-insights/index.html#stocks" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Stocks</a>
+    <a href="../market-insights/index.html#commodities" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Commodities</a>
+    <a href="../contact/index.html" class="mobile-link text-ink border-b border-hairline py-4">Contact Us</a>
     <a href="../contact/index.html" class="mobile-link bg-primary text-on-primary font-semibold text-center rounded-md py-3.5 mt-6">Book a Free Consultation</a>
     <a href="tel:+919751031915" class="mobile-link text-primary mt-6 font-semibold text-center">+91 9751031915</a>
   </nav>
@@ -139,16 +144,16 @@
 <!-- MAIN-CONTENT-START -->
 
   <!-- Hero -->
-  <section class="relative overflow-hidden bg-canvas-dark border-b border-hairline-on-dark py-16 md:py-section">
+  <section class="relative overflow-hidden bg-canvas border-b border-hairline py-16 md:py-section">
     <div class="absolute inset-0 pointer-events-none opacity-20" style="background:radial-gradient(circle at 80% 20%, #FBBE07 0%, transparent 45%)"></div>
     <div class="max-w-[1280px] mx-auto px-6 grid md:grid-cols-2 gap-14 items-center relative z-10">
       <div class="reveal">
         <p class="text-primary text-sm font-semibold tracking-wide uppercase mb-5">Services</p>
-        <h1 class="font-sans font-extrabold text-[38px] md:text-[56px] leading-[1.12] tracking-[-0.5px] text-white mb-6">Services</h1>
-        <p class="text-body text-[17px] md:text-[19px] leading-[1.6] max-w-xl">Seven services, one team, one plan.</p>
+        <h1 class="font-display font-medium text-[38px] md:text-[56px] leading-[1.12] tracking-[-0.5px] text-ink mb-6">Services</h1>
+        <p class="text-body text-[17px] md:text-[19px] leading-[1.6] max-w-xl">Three services, one team, one plan.</p>
       </div>
       <div class="reveal" style="transition-delay:120ms">
-        <div class="aspect-[4/3] rounded-xl2 overflow-hidden shadow-2xl relative border border-hairline-on-dark">
+        <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-2xl relative border border-hairline">
           <img src="../assets/images/feature-consultation.jpg" alt="Photo by Vitaly Gariev on Unsplash - Two colleagues in discussion at a modern office desk" class="w-full h-full object-cover">
         </div>
       </div>
@@ -156,82 +161,38 @@
   </section>
 
   <!-- Services list -->
-  <section class="bg-canvas-dark py-section border-b border-hairline-on-dark">
+  <section class="bg-canvas py-section border-b border-hairline">
     <div class="max-w-[1280px] mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-3 gap-6">
 
-        <a href="financial-planning/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
+        <a href="financial-planning/index.html" class="reveal group bg-primary text-on-primary rounded-xl p-8 flex flex-col transition-transform hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center mb-6">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h1m4 0h1m-6 4h1m4 0h1m-6 4h1m4 0h1"/></svg>
           </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Financial Planning</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> you're trying to get a handle on your whole financial picture for the first time.</p>
+          <h2 class="text-on-primary text-[22px] font-semibold mb-3">Financial Planning</h2>
+          <p class="text-on-primary/80 text-[14px] leading-[1.6] mb-3"><span class="text-on-primary font-medium">Best if</span> you're trying to get a handle on your whole financial picture for the first time.</p>
           <div class="mt-auto pt-4">
-            <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            <span class="text-[#FBBE07] text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
-        <a href="mutual-funds/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors" style="transition-delay:80ms">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        <a href="mutual-funds/index.html" class="reveal group bg-[#FBBE07] text-ink rounded-xl p-8 flex flex-col transition-transform hover:-translate-y-1" style="transition-delay:80ms">
+          <div class="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14261D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
           </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Mutual Funds</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> you want to start or organize your fund investments without picking blind off a rankings list.</p>
+          <h2 class="text-ink text-[22px] font-semibold mb-3">Mutual Funds</h2>
+          <p class="text-ink/75 text-[14px] leading-[1.6] mb-3"><span class="text-ink font-medium">Best if</span> you want to start or organize your fund investments without picking blind off a rankings list.</p>
           <div class="mt-auto pt-4">
-            <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            <span class="text-ink text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
-        <a href="retirement-tax-planning/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors" style="transition-delay:160ms">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <a href="insurance/index.html" class="reveal group bg-[#D7E4DA] text-ink rounded-xl p-8 flex flex-col transition-transform hover:-translate-y-1" style="transition-delay:160ms">
+          <div class="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Retirement &amp; Tax Planning</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> retirement feels far off but you want to stop overpaying tax now.</p>
-          <div class="mt-auto pt-4">
-            <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-
-        <a href="insurance/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors" style="transition-delay:240ms">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Insurance</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> you need cover for your health, life, vehicle, home, travel, or business.</p>
-          <div class="mt-auto pt-4">
-            <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-
-        <a href="loans/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors" style="transition-delay:0ms">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
-          </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Loans</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> you're financing a purchase and want the rate shopped for you instead of taking the first offer.</p>
-          <div class="mt-auto pt-4">
-            <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-
-        <a href="real-estate/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors" style="transition-delay:80ms">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
-          </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Real Estate</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> you're buying, selling, or investing in property and want it to fit your broader plan, not just close a deal.</p>
-          <div class="mt-auto pt-4">
-            <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-
-        <a href="debt-collection-recovery/index.html" class="reveal group bg-surface-card-dark border border-hairline-on-dark hover:border-primary/60 rounded-xl2 p-8 flex flex-col transition-colors" style="transition-delay:160ms">
-          <div class="w-12 h-12 rounded-full bg-surface-elevated-dark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/></svg>
-          </div>
-          <h2 class="text-white text-[22px] font-semibold mb-3 group-hover:text-primary transition-colors">Debt Collection &amp; Recovery</h2>
-          <p class="text-muted-strong text-[14px] leading-[1.6] mb-3"><span class="text-white font-medium">Best if</span> you're a lender or business managing overdue accounts and need a structured, compliant recovery process.</p>
+          <h2 class="text-ink text-[22px] font-semibold mb-3">Insurance</h2>
+          <p class="text-ink/75 text-[14px] leading-[1.6] mb-3"><span class="text-ink font-medium">Best if</span> you need cover for your health, life, vehicle, home, travel, or business.</p>
           <div class="mt-auto pt-4">
             <span class="text-primary text-sm font-semibold inline-flex items-center gap-1">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
@@ -242,11 +203,11 @@
   </section>
 
   <!-- Closing CTA band -->
-  <section class="bg-canvas-dark py-section">
+  <section class="bg-canvas py-section">
     <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="reveal bg-surface-card border border-hairline rounded-xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="text-center md:text-left">
-          <h2 class="text-white text-[26px] md:text-[32px] font-bold leading-[1.2] mb-3">Not sure which service fits? Let's talk it through.</h2>
+          <h2 class="text-ink text-[26px] md:text-[32px] font-display font-medium leading-[1.2] mb-3">Not sure which service fits? Let's talk it through.</h2>
           <p class="text-body text-[16px]">One free consultation. No pressure, no obligation, no jargon.</p>
         </div>
         <a href="../contact/index.html" class="shrink-0 bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-full transition-colors">Book a Free Consultation</a>
@@ -258,36 +219,36 @@
 
 </main>
 
-<footer class="bg-surface-soft-light text-body-on-light">
+<footer class="bg-surface-soft text-body">
   <div class="max-w-[1280px] mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
     <div class="col-span-2 flex flex-col justify-between">
       <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-20 md:h-24 w-auto self-start">
       <div>
-        <p class="text-[13px] text-muted-on-light max-w-sm leading-[1.6] mb-6">Future Focus Solutions is a Chennai-based financial services team covering planning, mutual funds, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across six different advisors.</p>
+        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-6">Future Focus Solutions is a Chennai-based financial services team covering planning, mutual funds, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across six different advisors.</p>
         <div class="flex gap-4">
-          <a href="https://www.facebook.com/people/Futurefocus-Solutions/61560132209162/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="https://www.instagram.com/futurefocussolutions_1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="https://www.facebook.com/people/Futurefocus-Solutions/61560132209162/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/futurefocussolutions_1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
         </div>
       </div>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4">Quick Links</h4>
+      <h4 class="font-semibold text-[14px] mb-4 text-ink">Quick Links</h4>
       <ul class="space-y-3">
-        <li><a href="../about/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">About Us</a></li>
-        <li><a href="index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Services</a></li>
-        <li><a href="../market-insights/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Market Insights</a></li>
-        <li><a href="../contact/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Contact</a></li>
+        <li><a href="../about/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">About Us</a></li>
+        <li><a href="index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Services</a></li>
+        <li><a href="../market-insights/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Market Insights</a></li>
+        <li><a href="../contact/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Contact Us</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4">Services</h4>
+      <h4 class="font-semibold text-[14px] mb-4 text-ink">Services</h4>
       <ul class="space-y-3">
-        <li><a href="financial-planning/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Financial Planning</a></li><li><a href="mutual-funds/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Mutual Funds</a></li><li><a href="retirement-tax-planning/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Retirement &amp; Tax Planning</a></li><li><a href="insurance/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Insurance</a></li><li><a href="loans/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Loans</a></li><li><a href="real-estate/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Real Estate</a></li><li><a href="debt-collection-recovery/index.html" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Debt Collection &amp; Recovery</a></li>
+        <li><a href="financial-planning/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Financial Planning</a></li><li><a href="mutual-funds/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Mutual Funds</a></li><li><a href="insurance/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Insurance</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4">Contact</h4>
-      <ul class="space-y-3 text-[13px] text-muted-on-light leading-[1.6]">
+      <h4 class="font-semibold text-[14px] mb-4 text-ink">Contact</h4>
+      <ul class="space-y-3 text-[13px] text-muted leading-[1.6]">
         <li>Future Focus Solutions</li>
         <li>No.22, Shanmuganagar Salari, Choolaimedu, Chennai – 600 094, Tamil Nadu, India</li>
         <li><a href="tel:+919751031915" class="hover:text-emerald transition-colors">+91 9751031915</a></li>
@@ -297,7 +258,7 @@
     </div>
   </div>
   <div class="max-w-[1280px] mx-auto px-6 pb-8">
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline-on-light text-[12px] text-muted-on-light">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline text-[12px] text-muted">
       <p>© Future Focus Solutions 2026. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="../privacy-policy/index.html" class="hover:text-emerald transition-colors">Privacy Policy</a>
@@ -308,7 +269,7 @@
 </footer>
 
 <div class="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 flex flex-col gap-3">
-  <button id="scroll-top" aria-label="Scroll to top" class="w-11 h-11 md:w-12 md:h-12 bg-surface-card-dark border border-hairline-on-dark rounded-full flex items-center justify-center text-white hover:bg-surface-elevated-dark transition-all opacity-0 translate-y-4 pointer-events-none shadow-lg">
+  <button id="scroll-top" aria-label="Scroll to top" class="w-11 h-11 md:w-12 md:h-12 bg-surface-card border border-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-strong transition-all opacity-0 translate-y-4 pointer-events-none shadow-lg">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
   <a href="tel:+919751031915" aria-label="Call us" class="w-11 h-11 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center text-on-primary hover:scale-105 transition-transform shadow-lg">

@@ -51,7 +51,11 @@ OUTPUT_PATHS = {
     "terms-and-conditions": "terms-and-conditions/index.html",
 }
 
-SERVICE_KEYS = [
+# Full historical list - still needed so the 4 frozen (out-of-IA) service
+# pages keep building today (see the frozen-page build loop near the bottom
+# of this file). Nav/footer/services-grid code must use NAV_SERVICE_KEYS
+# instead, which is the new-IA subset actually linked anywhere on the site.
+ALL_SERVICE_KEYS = [
     ("financial-planning", "Financial Planning"),
     ("mutual-funds", "Mutual Funds"),
     ("retirement-tax-planning", "Retirement &amp; Tax Planning"),
@@ -61,12 +65,22 @@ SERVICE_KEYS = [
     ("debt-collection-recovery", "Debt Collection &amp; Recovery"),
 ]
 
+NAV_SERVICE_KEYS = [
+    ("financial-planning", "Financial Planning"),
+    ("mutual-funds", "Mutual Funds"),
+    ("insurance", "Insurance"),
+]
+
+MARKET_INSIGHTS_ITEMS = [
+    ("stocks", "Stocks"),
+    ("commodities", "Commodities"),
+]
+
 TOP_NAV = [
     ("home", "Home"),
     ("about", "About Us"),
-    # "services" handled separately as a dropdown
-    ("market-insights", "Market Insights"),
-    ("contact", "Contact"),
+    # "services" and "market-insights" handled separately as dropdowns
+    ("contact", "Contact Us"),
 ]
 
 
@@ -139,35 +153,51 @@ def fix_internal_paths(text, page_key):
 # ---------------------------------------------------------------------------
 # Nav rendering
 # ---------------------------------------------------------------------------
-def desktop_nav(page_key, active_service=None):
-    parts = []
-    for key, label in TOP_NAV[:2]:  # Home, About Us
-        cls = "text-sm font-medium text-white transition-colors" if key == page_key else "text-sm font-medium hover:text-white transition-colors"
-        parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
-
-    services_active = page_key == "services" or active_service is not None
-    services_btn_cls = "text-sm font-medium text-white transition-colors flex items-center gap-1" if services_active else "text-sm font-medium hover:text-white transition-colors flex items-center gap-1"
+def _dropdown(page_key, label, items, active_key, all_link=None):
+    """Shared renderer for the Services / Market Insights top-nav dropdowns."""
+    btn_active = active_key is not None
+    btn_cls = "text-sm font-medium text-ink transition-colors flex items-center gap-1" if btn_active else "text-sm font-medium text-body hover:text-ink transition-colors flex items-center gap-1"
     dropdown_items = []
-    for skey, slabel in SERVICE_KEYS:
-        item_cls = "block px-5 py-2.5 text-sm text-primary font-semibold hover:bg-surface-elevated-dark transition-colors" if skey == active_service else "block px-5 py-2.5 text-sm text-body hover:bg-surface-elevated-dark hover:text-white transition-colors"
-        dropdown_items.append(f'<a href="{rel(page_key, skey)}" class="{item_cls}">{slabel}</a>')
-    parts.append(f'''<div class="relative group">
-        <button class="{services_btn_cls}">
-          Services
+    for ikey, ilabel in items:
+        item_cls = "block px-5 py-2.5 text-sm text-primary font-semibold hover:bg-surface-strong transition-colors" if ikey == active_key else "block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors"
+        dropdown_items.append(f'<a href="{ikey}" class="{item_cls}">{ilabel}</a>')
+    all_link_html = ""
+    if all_link:
+        all_link_html = f'''<div class="border-t border-hairline mt-2 pt-2">
+              <a href="{all_link}" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-strong transition-colors">All Services →</a>
+            </div>'''
+    return f'''<div class="relative group">
+        <button class="{btn_cls}">
+          {label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-          <div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 shadow-2xl py-2 w-64">
+          <div class="bg-surface-card border border-hairline rounded-xl shadow-2xl py-2 w-64">
             {''.join(dropdown_items)}
-            <div class="border-t border-hairline-on-dark mt-2 pt-2">
-              <a href="{rel(page_key, 'services')}" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-elevated-dark transition-colors">All Services →</a>
-            </div>
+            {all_link_html}
           </div>
         </div>
-      </div>''')
+      </div>'''
 
-    for key, label in TOP_NAV[2:]:  # Market Insights, Contact
-        cls = "text-sm font-medium text-white transition-colors" if key == page_key else "text-sm font-medium hover:text-white transition-colors"
+
+def desktop_nav(page_key, active_service=None):
+    parts = []
+    for key, label in TOP_NAV[:2]:  # Home, About Us
+        cls = "text-sm font-medium text-ink transition-colors" if key == page_key else "text-sm font-medium text-body hover:text-ink transition-colors"
+        parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
+
+    services_active_href = rel(page_key, active_service) if active_service else None
+    services_items = [(rel(page_key, skey), slabel) for skey, slabel in NAV_SERVICE_KEYS]
+    parts.append(_dropdown(page_key, "Services", services_items, services_active_href,
+                            all_link=rel(page_key, 'services')))
+
+    mi_base = rel(page_key, 'market-insights')
+    mi_items = [(f"{mi_base}#{ikey}", ilabel) for ikey, ilabel in MARKET_INSIGHTS_ITEMS]
+    mi_page_active = mi_base if page_key == "market-insights" else None
+    parts.append(_dropdown(page_key, "Market Insights", mi_items, mi_page_active, all_link=None))
+
+    for key, label in TOP_NAV[2:]:  # Contact Us
+        cls = "text-sm font-medium text-ink transition-colors" if key == page_key else "text-sm font-medium text-body hover:text-ink transition-colors"
         parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
 
     return "\n      ".join(parts)
@@ -176,13 +206,16 @@ def desktop_nav(page_key, active_service=None):
 def mobile_nav(page_key, active_service=None):
     parts = []
     for key, label in [("home", "Home"), ("about", "About Us")]:
-        parts.append(f'<a href="{rel(page_key, key)}" class="mobile-link text-white border-b border-hairline-on-dark py-4">{label}</a>')
-    parts.append(f'<a href="{rel(page_key, "services")}" class="mobile-link text-white border-b border-hairline-on-dark py-4">Services</a>')
-    for skey, slabel in SERVICE_KEYS:
-        cls = "mobile-link text-primary font-semibold border-b border-hairline-on-dark py-3 pl-4 text-sm" if skey == active_service else "mobile-link text-muted-strong border-b border-hairline-on-dark py-3 pl-4 text-sm"
+        parts.append(f'<a href="{rel(page_key, key)}" class="mobile-link text-ink border-b border-hairline py-4">{label}</a>')
+    parts.append(f'<a href="{rel(page_key, "services")}" class="mobile-link text-ink border-b border-hairline py-4">Services</a>')
+    for skey, slabel in NAV_SERVICE_KEYS:
+        cls = "mobile-link text-primary font-semibold border-b border-hairline py-3 pl-4 text-sm" if skey == active_service else "mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm"
         parts.append(f'<a href="{rel(page_key, skey)}" class="{cls}">{slabel}</a>')
-    for key, label in [("market-insights", "Market Insights"), ("contact", "Contact")]:
-        parts.append(f'<a href="{rel(page_key, key)}" class="mobile-link text-white border-b border-hairline-on-dark py-4">{label}</a>')
+    mi_base = rel(page_key, 'market-insights')
+    parts.append(f'<a href="{mi_base}" class="mobile-link text-ink border-b border-hairline py-4">Market Insights</a>')
+    for ikey, ilabel in MARKET_INSIGHTS_ITEMS:
+        parts.append(f'<a href="{mi_base}#{ikey}" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">{ilabel}</a>')
+    parts.append(f'<a href="{rel(page_key, "contact")}" class="mobile-link text-ink border-b border-hairline py-4">Contact Us</a>')
     return "\n    ".join(parts)
 
 
@@ -191,9 +224,8 @@ def mobile_nav(page_key, active_service=None):
 # ---------------------------------------------------------------------------
 def render_shell(page_key, title, description, body, whatsapp_message, active_service=None):
     a = lambda k: rel(page_key, k)  # noqa: E731 - short alias, used heavily below
-    logo_white = a("assets/logo/logo-white.png")
-    icon_white = a("assets/logo/icon-white.png")
     logo_color = a("assets/logo/logo-color.png")
+    icon_color = a("assets/logo/icon-color.png")
     favicon = a("assets/logo/icon-color.png")
 
     wa_fab_text = urllib.parse.quote_plus(whatsapp_message)
@@ -209,40 +241,36 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 <link rel="icon" type="image/png" href="{favicon}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Outfit:wght@500;600&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {{
     theme: {{
       extend: {{
         colors: {{
-          primary: '#FBBE07',
-          'primary-active': '#E0A800',
-          'primary-disabled': '#4A430F',
-          'canvas-dark': '#0A1F16',
+          primary: '#04442C',
+          'primary-active': '#033523',
+          'primary-disabled': '#B9C7BE',
+          canvas: '#FFFAF0',
           'canvas-light': '#FFFFFF',
-          'surface-card-dark': '#12291D',
-          'surface-elevated-dark': '#1B3A28',
-          'surface-soft-light': '#FAFAF5',
-          'surface-strong-light': '#F2F0E6',
-          ink: '#0F1A14',
-          body: '#E7ECE8',
-          'body-on-light': '#0F1A14',
-          muted: '#8AA398',
-          'muted-strong': '#A9BFB2',
-          'muted-on-light': '#4B6358',
-          'hairline-on-dark': '#1B3A28',
-          'hairline-on-light': '#E4E7E2',
+          'surface-card': '#F5F0E0',
+          'surface-strong': '#ECE3C8',
+          'surface-soft': '#FAF5E8',
+          'surface-form': '#FFFFFF',
+          ink: '#14261D',
+          body: '#3E4A43',
+          muted: '#6C7A72',
+          'muted-strong': '#33453A',
+          hairline: '#E7E0C8',
           emerald: '#2D834D',
-          'on-primary': '#0F1A14',
+          'on-primary': '#FFFFFF',
           info: '#3b82f6',
         }},
         fontFamily: {{
           sans: ['Inter', 'sans-serif'],
-          mono: ['JetBrains Mono', 'monospace'],
+          display: ['Outfit', 'sans-serif'],
         }},
         spacing: {{ section: '80px' }},
-        borderRadius: {{ xl2: '14px' }},
       }}
     }}
   }}
@@ -254,12 +282,12 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
   .reveal.in-view{{opacity:1;transform:translateY(0)}}
   .no-scrollbar::-webkit-scrollbar{{display:none}}
   .no-scrollbar{{-ms-overflow-style:none;scrollbar-width:none}}
-  ::selection{{background:#FBBE07;color:#0F1A14}}
+  ::selection{{background:#FBBE07;color:#14261D}}
 </style>
 </head>
-<body class="bg-canvas-dark text-body font-sans antialiased overflow-x-hidden">
+<body class="bg-canvas text-body font-sans antialiased overflow-x-hidden">
 
-<div class="bg-surface-card-dark text-muted-strong text-[13px] hidden sm:block">
+<div class="bg-surface-soft text-muted-strong text-[13px] hidden sm:block">
   <div class="max-w-[1280px] mx-auto px-6 h-10 flex items-center justify-end gap-6">
     <a href="mailto:{BUSINESS['email']}" class="hover:text-primary transition-colors flex items-center gap-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6 12 13 2 6" stroke-width="2" fill="none"/><path d="M2 6h20v12H2z" fill="none" stroke-width="2"/></svg>
@@ -272,11 +300,11 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
   </div>
 </div>
 
-<header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas-dark border-b border-hairline-on-dark header-transition">
+<header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas border-b border-hairline header-transition">
   <div class="max-w-[1280px] mx-auto w-full px-6 h-[88px] flex items-center justify-between">
     <a href="{a('home')}" class="flex items-center shrink-0">
-      <img src="{logo_white}" alt="{BUSINESS['name']} logo" class="h-14 md:h-16 w-auto hidden sm:block">
-      <img src="{icon_white}" alt="{BUSINESS['name']} logo" class="h-12 w-auto sm:hidden">
+      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-14 md:h-16 w-auto hidden sm:block">
+      <img src="{icon_color}" alt="{BUSINESS['name']} logo" class="h-12 w-auto sm:hidden">
     </a>
 
     <nav class="hidden lg:flex items-center gap-8">
@@ -287,17 +315,17 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
       <a href="{a('contact')}" class="hidden lg:flex bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-6 py-3 rounded-md transition-colors h-[44px] items-center">
         Book a Free Consultation
       </a>
-      <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Open menu">
+      <button id="mobile-menu-btn" class="lg:hidden text-ink p-2" aria-label="Open menu">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<div id="mobile-menu" class="fixed inset-0 bg-canvas-dark z-[60] transform translate-x-full transition-transform duration-300 pt-6 px-6 overflow-y-auto">
+<div id="mobile-menu" class="fixed inset-0 bg-canvas z-[60] transform translate-x-full transition-transform duration-300 pt-6 px-6 overflow-y-auto">
   <div class="flex items-center justify-between mb-8">
-    <img src="{logo_white}" alt="{BUSINESS['name']} logo" class="h-11 w-auto">
-    <button id="mobile-menu-close" class="text-white p-2" aria-label="Close menu">
+    <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-11 w-auto">
+    <button id="mobile-menu-close" class="text-ink p-2" aria-label="Close menu">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
@@ -312,36 +340,36 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 {body}
 </main>
 
-<footer class="bg-surface-soft-light text-body-on-light">
+<footer class="bg-surface-soft text-body">
   <div class="max-w-[1280px] mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
     <div class="col-span-2 flex flex-col justify-between">
       <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-20 md:h-24 w-auto self-start">
       <div>
-        <p class="text-[13px] text-muted-on-light max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} is a Chennai-based financial services team covering planning, mutual funds, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across six different advisors.</p>
+        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} is a Chennai-based financial services team covering planning, mutual funds, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across six different advisors.</p>
         <div class="flex gap-4">
-          <a href="{BUSINESS['social']['facebook']}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="{BUSINESS['social']['instagram']}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong-light flex items-center justify-center text-ink hover:bg-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="{BUSINESS['social']['facebook']}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="{BUSINESS['social']['instagram']}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
         </div>
       </div>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4">Quick Links</h4>
+      <h4 class="font-semibold text-[14px] mb-4 text-ink">Quick Links</h4>
       <ul class="space-y-3">
-        <li><a href="{a('about')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">About Us</a></li>
-        <li><a href="{a('services')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Services</a></li>
-        <li><a href="{a('market-insights')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Market Insights</a></li>
-        <li><a href="{a('contact')}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">Contact</a></li>
+        <li><a href="{a('about')}" class="text-[13px] text-muted hover:text-emerald transition-colors">About Us</a></li>
+        <li><a href="{a('services')}" class="text-[13px] text-muted hover:text-emerald transition-colors">Services</a></li>
+        <li><a href="{a('market-insights')}" class="text-[13px] text-muted hover:text-emerald transition-colors">Market Insights</a></li>
+        <li><a href="{a('contact')}" class="text-[13px] text-muted hover:text-emerald transition-colors">Contact Us</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4">Services</h4>
+      <h4 class="font-semibold text-[14px] mb-4 text-ink">Services</h4>
       <ul class="space-y-3">
-        {''.join(f'<li><a href="{a(skey)}" class="text-[13px] text-muted-on-light hover:text-emerald transition-colors">{slabel}</a></li>' for skey, slabel in SERVICE_KEYS)}
+        {''.join(f'<li><a href="{a(skey)}" class="text-[13px] text-muted hover:text-emerald transition-colors">{slabel}</a></li>' for skey, slabel in NAV_SERVICE_KEYS)}
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4">Contact</h4>
-      <ul class="space-y-3 text-[13px] text-muted-on-light leading-[1.6]">
+      <h4 class="font-semibold text-[14px] mb-4 text-ink">Contact</h4>
+      <ul class="space-y-3 text-[13px] text-muted leading-[1.6]">
         <li>{BUSINESS['name']}</li>
         <li>{BUSINESS['address']}</li>
         <li><a href="tel:{BUSINESS['phoneTel']}" class="hover:text-emerald transition-colors">{BUSINESS['phone']}</a></li>
@@ -351,7 +379,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
     </div>
   </div>
   <div class="max-w-[1280px] mx-auto px-6 pb-8">
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline-on-light text-[12px] text-muted-on-light">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline text-[12px] text-muted">
       <p>© {BUSINESS['name']} {BUSINESS['copyrightYear']}. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="{a('privacy-policy')}" class="hover:text-emerald transition-colors">Privacy Policy</a>
@@ -362,7 +390,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 </footer>
 
 <div class="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 flex flex-col gap-3">
-  <button id="scroll-top" aria-label="Scroll to top" class="w-11 h-11 md:w-12 md:h-12 bg-surface-card-dark border border-hairline-on-dark rounded-full flex items-center justify-center text-white hover:bg-surface-elevated-dark transition-all opacity-0 translate-y-4 pointer-events-none shadow-lg">
+  <button id="scroll-top" aria-label="Scroll to top" class="w-11 h-11 md:w-12 md:h-12 bg-surface-card border border-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-strong transition-all opacity-0 translate-y-4 pointer-events-none shadow-lg">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
   <a href="tel:{BUSINESS['phoneTel']}" aria-label="Call us" class="w-11 h-11 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center text-on-primary hover:scale-105 transition-transform shadow-lg">
@@ -425,14 +453,14 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 # Page registry: key -> (title, meta description, whatsapp fab message, active_service)
 # ---------------------------------------------------------------------------
 PAGES = [
-    ("home", f"{BUSINESS['name']} - Financial Planning, Mutual Funds, Insurance, Loans, Real Estate & Debt Recovery in Chennai",
-     "One team across financial planning, mutual funds, retirement &amp; tax planning, insurance, loans, real estate, and debt recovery in Chennai. Book a free consultation.",
+    ("home", f"{BUSINESS['name']} - Financial Planning, Mutual Funds & Insurance in Chennai",
+     "One team across financial planning, mutual funds, and insurance in Chennai. Book a free consultation.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("about", f"About Us - {BUSINESS['name']}",
      f"One team across financial planning, mutual funds, insurance, loans, real estate, and debt recovery in Chennai - meet {BUSINESS['name']}.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("services", f"Services - {BUSINESS['name']}",
-     "Seven services, one team, one plan: financial planning, mutual funds, retirement & tax planning, insurance, loans, real estate, and debt recovery.",
+     "Three services, one team, one plan: financial planning, mutual funds, and insurance.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about your services.", None),
     ("financial-planning", f"Financial Planning - {BUSINESS['name']}",
      "One plan for your income, savings, investments, and goals - not a different answer from every product you ask about.",
@@ -440,21 +468,9 @@ PAGES = [
     ("mutual-funds", f"Mutual Funds - {BUSINESS['name']}",
      "Fund selection matched to your goals and timeline, with plain answers about risk, cost, and what you're actually invested in.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about Mutual Funds.", "mutual-funds"),
-    ("retirement-tax-planning", f"Retirement &amp; Tax Planning - {BUSINESS['name']}",
-     "Build the income you'll need later, and keep more of what you earn now.",
-     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Retirement & Tax Planning.", "retirement-tax-planning"),
     ("insurance", f"Insurance - {BUSINESS['name']}",
      "Cover for your health, your life, your vehicle, your home, and your business - matched to what you actually need.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone about Insurance.", "insurance"),
-    ("loans", f"Loans - {BUSINESS['name']}",
-     "Personal, home, car, and business loans - we shop the rates so you don't take the first offer you're given.",
-     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Loans.", "loans"),
-    ("real-estate", f"Real Estate - {BUSINESS['name']}",
-     "Buy, sell, or invest - with someone who's also looking at your whole financial plan.",
-     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Real Estate.", "real-estate"),
-    ("debt-collection-recovery", f"Debt Collection &amp; Recovery - {BUSINESS['name']}",
-     "Structured, compliant recovery for secured and unsecured accounts - for businesses and lenders.",
-     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Debt Collection & Recovery.", "debt-collection-recovery"),
     ("market-insights", f"Market Insights - {BUSINESS['name']}",
      "Stocks and commodities - what's moving, in plain language.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),

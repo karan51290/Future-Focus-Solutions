@@ -1,80 +1,80 @@
 <!-- MAIN-CONTENT-START -->
 
   <!-- Hero -->
-  <section class="relative overflow-hidden bg-canvas-dark border-b border-hairline-on-dark py-16 md:py-section">
+  <section class="relative overflow-hidden bg-canvas border-b border-hairline py-16 md:py-section">
     <div class="absolute inset-0 pointer-events-none opacity-20" style="background:radial-gradient(circle at 80% 20%, #FBBE07 0%, transparent 45%)"></div>
     <div class="max-w-[1280px] mx-auto px-6 relative z-10 text-center reveal">
-      <h1 class="font-sans font-extrabold text-[38px] md:text-[56px] leading-[1.12] tracking-[-0.5px] text-white mb-6">Contact Us</h1>
+      <h1 class="font-display font-medium text-[38px] md:text-[56px] leading-[1.12] tracking-[-0.5px] text-ink mb-6">Contact Us</h1>
       <p class="text-body text-[17px] md:text-[19px] leading-[1.6] max-w-2xl mx-auto">One free consultation. Tell us what you're trying to solve.</p>
     </div>
   </section>
 
   <!-- Two-column: contact details + form -->
-  <section class="bg-canvas-dark py-section border-b border-hairline-on-dark">
+  <section class="bg-canvas py-section border-b border-hairline">
     <div class="max-w-[1280px] mx-auto px-6 grid lg:grid-cols-2 gap-14">
 
       <!-- Left column -->
       <div class="reveal">
-        <h2 class="text-white text-[26px] md:text-[30px] font-bold leading-[1.2] mb-8">Get in Touch</h2>
+        <h2 class="text-ink text-[26px] md:text-[30px] font-display font-medium leading-[1.2] mb-8">Get in Touch</h2>
         <div class="grid sm:grid-cols-2 gap-5">
-          {{#ADDRESS}}<div class="sm:col-span-2 bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-elevated-dark flex items-center justify-center">
+          {{#ADDRESS}}<div class="sm:col-span-2 bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
               <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">Address</div>
-              <div class="text-white text-[17px] font-medium leading-[1.5]">{{NAME}}, {{ADDRESS}}</div>
+              <div class="text-ink text-[17px] font-medium leading-[1.5]">{{NAME}}, {{ADDRESS}}</div>
             </div>
           </div>{{/ADDRESS}}
 
-          <div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-elevated-dark flex items-center justify-center">
+          <div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div>
               <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">Phone</div>
-              <a href="tel:{{PHONE}}" class="text-white text-[18px] font-semibold hover:text-primary transition-colors block">{{PHONE}}</a>
+              <a href="tel:{{PHONE}}" class="text-ink text-[18px] font-semibold hover:text-primary transition-colors block">{{PHONE}}</a>
               <div class="text-muted text-[13px] mt-1">Fax: 91-44-31379413</div>
             </div>
           </div>
 
-          {{#WHATSAPP}}<div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-elevated-dark flex items-center justify-center">
+          {{#WHATSAPP}}<div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
             </div>
             <div>
               <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">WhatsApp</div>
-              <a href="https://wa.me/{{WHATSAPP}}" class="text-white text-[18px] font-semibold hover:text-primary transition-colors block">{{WHATSAPP}}</a>
+              <a href="https://wa.me/{{WHATSAPP}}" class="text-ink text-[18px] font-semibold hover:text-primary transition-colors block">{{WHATSAPP}}</a>
             </div>
           </div>{{/WHATSAPP}}
 
-          {{#EMAIL}}<div class="sm:col-span-2 bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-elevated-dark flex items-center justify-center">
+          {{#EMAIL}}<div class="sm:col-span-2 bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2"><path d="M22 6 12 13 2 6" stroke-width="2" fill="none"/><path d="M2 6h20v12H2z" fill="none" stroke-width="2"/></svg>
             </div>
             <div>
               <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">Email</div>
-              <a href="mailto:{{EMAIL}}" class="text-white text-[18px] font-semibold hover:text-primary transition-colors block break-all">{{EMAIL}}</a>
+              <a href="mailto:{{EMAIL}}" class="text-ink text-[18px] font-semibold hover:text-primary transition-colors block break-all">{{EMAIL}}</a>
             </div>
           </div>{{/EMAIL}}
 
-          <div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-elevated-dark flex items-center justify-center">
+          <div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 4.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 4.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-4.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-4.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z"/></svg>
             </div>
             <div>
               <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">GSTIN</div>
-              <div class="text-white text-[17px] font-medium">33AAJFF7540F1ZK</div>
+              <div class="text-ink text-[17px] font-medium">33AAJFF7540F1ZK</div>
             </div>
           </div>
 
-          <div class="bg-surface-card-dark border border-hairline-on-dark rounded-xl2 p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-elevated-dark flex items-center justify-center">
+          <div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div>
               <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">Business Hours</div>
-              <div class="text-white text-[17px] font-medium">Mon&ndash;Sat, 9:00 AM &ndash; 7:00 PM</div>
+              <div class="text-ink text-[17px] font-medium">Mon&ndash;Sat, 9:00 AM &ndash; 7:00 PM</div>
             </div>
           </div>
         </div>
@@ -82,21 +82,21 @@
 
       <!-- Right column: form -->
       <div class="reveal" style="transition-delay:100ms">
-        <div class="bg-surface-strong-light text-body-on-light rounded-xl2 p-8 md:p-10 shadow-2xl">
+        <div class="bg-surface-form text-body rounded-xl p-8 md:p-10 shadow-2xl">
           <h3 class="text-ink text-[22px] font-bold mb-2">Request a Free Consultation</h3>
-          <p class="text-muted-on-light text-[14px] mb-6">Fill this in and we'll pick up the conversation on WhatsApp.</p>
+          <p class="text-muted text-[14px] mb-6">Fill this in and we'll pick up the conversation on WhatsApp.</p>
           <form id="whatsapp-form" class="space-y-5">
             <div>
               <label for="wa-name" class="block text-[13px] font-semibold text-ink mb-2">Full Name</label>
-              <input type="text" id="wa-name" required class="w-full bg-white border border-hairline-on-light rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted-on-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Your name">
+              <input type="text" id="wa-name" required class="w-full bg-white border border-hairline rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Your name">
             </div>
             <div>
               <label for="wa-phone" class="block text-[13px] font-semibold text-ink mb-2">Phone</label>
-              <input type="tel" id="wa-phone" required class="w-full bg-white border border-hairline-on-light rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted-on-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Your phone number">
+              <input type="tel" id="wa-phone" required class="w-full bg-white border border-hairline rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Your phone number">
             </div>
             <div>
               <label for="wa-service" class="block text-[13px] font-semibold text-ink mb-2">Service you're interested in</label>
-              <select id="wa-service" class="w-full bg-white border border-hairline-on-light rounded-md px-4 py-3 text-[15px] text-ink focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+              <select id="wa-service" class="w-full bg-white border border-hairline rounded-md px-4 py-3 text-[15px] text-ink focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
                 <option>Financial Planning</option>
                 <option>Mutual Funds</option>
                 <option>Retirement &amp; Tax Planning</option>
@@ -108,7 +108,7 @@
             </div>
             <div>
               <label for="wa-message" class="block text-[13px] font-semibold text-ink mb-2">Message</label>
-              <textarea id="wa-message" rows="4" class="w-full bg-white border border-hairline-on-light rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted-on-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Tell us a little about what you need"></textarea>
+              <textarea id="wa-message" rows="4" class="w-full bg-white border border-hairline rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Tell us a little about what you need"></textarea>
             </div>
             <button type="submit" class="w-full bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-md transition-colors">Send via WhatsApp</button>
           </form>
@@ -118,11 +118,11 @@
   </section>
 
   <!-- Map card -->
-  {{#GOOGLE_LINK}}<section class="bg-surface-card-dark py-section border-b border-hairline-on-dark">
+  {{#GOOGLE_LINK}}<section class="bg-surface-card py-section border-b border-hairline">
     <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal relative overflow-hidden rounded-xl2 border border-hairline-on-dark">
+      <div class="reveal relative overflow-hidden rounded-xl border border-hairline">
         <img src="/assets/images/contact-office.jpg" alt="Photo by Aalo Lens on Unsplash - Modern office lobby with a marble reception desk and plants" class="w-full h-[280px] md:h-[360px] object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-canvas-dark/90 via-canvas-dark/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"></div>
         <div class="absolute inset-x-0 bottom-0 p-8 md:p-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
           <div class="flex items-start gap-3">
             <svg class="shrink-0 mt-1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -135,10 +135,10 @@
   </section>{{/GOOGLE_LINK}}
 
   <!-- Closing quote -->
-  <section class="bg-canvas-dark py-section">
+  <section class="bg-canvas py-section">
     <div class="max-w-[1280px] mx-auto px-6">
       <div class="reveal max-w-3xl mx-auto text-center">
-        <p class="text-white text-[22px] md:text-[26px] font-semibold leading-[1.5]">"We're here for every stage of your financial journey - not just the one product you called about today."</p>
+        <p class="text-ink text-[22px] md:text-[26px] font-semibold leading-[1.5]">"We're here for every stage of your financial journey - not just the one product you called about today."</p>
       </div>
     </div>
   </section>
