@@ -2,3 +2,4 @@ docs/
 client-approved-reference.html
 .comments/
 .claude/
+__pycache__/
