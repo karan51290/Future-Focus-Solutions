@@ -101,6 +101,7 @@ SIMPLE_TOKENS = {
     "NAME": BUSINESS["name"],
     "ADDRESS": BUSINESS["address"],
     "PHONE": BUSINESS["phoneTel"],
+    "PHONE_DISPLAY": BUSINESS["phone"],
     "WHATSAPP": BUSINESS["whatsappNumber"],
     "EMAIL": BUSINESS["email"],
     "GOOGLE_LINK": GOOGLE_LINK,
@@ -153,8 +154,10 @@ def fix_internal_paths(text, page_key):
 # ---------------------------------------------------------------------------
 # Nav rendering
 # ---------------------------------------------------------------------------
-def _dropdown(page_key, label, items, active_key, all_link=None):
-    """Shared renderer for the Services / Market Insights top-nav dropdowns."""
+def _dropdown(page_key, label, items, active_key, all_link=None, label_href=None):
+    """Shared renderer for the Services / Market Insights top-nav dropdowns.
+    When label_href is given, the label itself is a clickable link to that
+    page rather than an inert hover-only toggle."""
     btn_active = active_key is not None
     btn_cls = "text-sm font-medium text-ink transition-colors flex items-center gap-1" if btn_active else "text-sm font-medium text-body hover:text-ink transition-colors flex items-center gap-1"
     dropdown_items = []
@@ -166,11 +169,13 @@ def _dropdown(page_key, label, items, active_key, all_link=None):
         all_link_html = f'''<div class="border-t border-hairline mt-2 pt-2">
               <a href="{all_link}" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-strong transition-colors">All Services →</a>
             </div>'''
+    label_tag = f'<a href="{label_href}" class="{btn_cls}">' if label_href else f'<button class="{btn_cls}">'
+    label_close = "</a>" if label_href else "</button>"
     return f'''<div class="relative group">
-        <button class="{btn_cls}">
+        {label_tag}
           {label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
+        {label_close}
         <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
           <div class="bg-surface-card border border-hairline rounded-xl shadow-2xl py-2 w-64">
             {''.join(dropdown_items)}
@@ -194,7 +199,7 @@ def desktop_nav(page_key, active_service=None):
     mi_base = rel(page_key, 'market-insights')
     mi_items = [(f"{mi_base}#{ikey}", ilabel) for ikey, ilabel in MARKET_INSIGHTS_ITEMS]
     mi_page_active = mi_base if page_key == "market-insights" else None
-    parts.append(_dropdown(page_key, "Market Insights", mi_items, mi_page_active, all_link=None))
+    parts.append(_dropdown(page_key, "Market Insights", mi_items, mi_page_active, all_link=None, label_href=mi_base))
 
     for key, label in TOP_NAV[2:]:  # Contact Us
         cls = "text-sm font-medium text-ink transition-colors" if key == page_key else "text-sm font-medium text-body hover:text-ink transition-colors"
@@ -345,7 +350,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
     <div class="col-span-2 flex flex-col justify-between">
       <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-20 md:h-24 w-auto self-start">
       <div>
-        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} is a Chennai-based financial services team covering planning, mutual funds, insurance, loans, real estate, and debt recovery - one team, so your finances don't end up scattered across six different advisors.</p>
+        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} helps individuals and families approach their financial planning, mutual fund and insurance decisions with greater clarity and confidence.</p>
         <div class="flex gap-4">
           <a href="{BUSINESS['social']['facebook']}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
           <a href="{BUSINESS['social']['instagram']}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -379,6 +384,9 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
     </div>
   </div>
   <div class="max-w-[1280px] mx-auto px-6 pb-8">
+    <div class="pt-6 pb-6 border-t border-hairline text-[12px] text-muted leading-[1.6]">
+      <p>The information provided on this website is intended for general informational purposes only and should not be considered personalised financial, investment, legal, tax or insurance advice. Financial decisions should be made after considering individual circumstances, objectives and requirements. All financial products and services are subject to their respective terms, conditions, eligibility criteria and applicable risks.</p>
+    </div>
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline text-[12px] text-muted">
       <p>© {BUSINESS['name']} {BUSINESS['copyrightYear']}. All rights reserved.</p>
       <div class="flex gap-6">
@@ -457,7 +465,7 @@ PAGES = [
      "One team across financial planning, mutual funds, and insurance in Chennai. Book a free consultation.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("about", f"About Us - {BUSINESS['name']}",
-     f"One team across financial planning, mutual funds, insurance, loans, real estate, and debt recovery in Chennai - meet {BUSINESS['name']}.",
+     f"A thoughtful approach to financial planning, mutual funds and insurance in Chennai - meet {BUSINESS['name']}.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
     ("services", f"Services - {BUSINESS['name']}",
      "Three services, one team, one plan: financial planning, mutual funds, and insurance.",

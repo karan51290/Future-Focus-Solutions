@@ -5,7 +5,8 @@
     <div class="absolute inset-0 pointer-events-none opacity-20" style="background:radial-gradient(circle at 80% 20%, #FBBE07 0%, transparent 45%)"></div>
     <div class="max-w-[1280px] mx-auto px-6 relative z-10 text-center reveal">
       <h1 class="font-display font-medium text-[38px] md:text-[56px] leading-[1.12] tracking-[-0.5px] text-ink mb-6">Contact Us</h1>
-      <p class="text-body text-[17px] md:text-[19px] leading-[1.6] max-w-2xl mx-auto">One free consultation. Tell us what you're trying to solve.</p>
+      <p class="text-primary text-sm font-semibold tracking-wide uppercase mb-3">Let's Start with a Conversation.</p>
+      <p class="text-body text-[17px] md:text-[19px] leading-[1.6] max-w-2xl mx-auto">Tell us about your financial requirements and we will be happy to assist you.</p>
     </div>
   </section>
 
@@ -32,21 +33,10 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div>
-              <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">Phone</div>
-              <a href="tel:{{PHONE}}" class="text-ink text-[18px] font-semibold hover:text-primary transition-colors block">{{PHONE}}</a>
-              <div class="text-muted text-[13px] mt-1">Fax: 91-44-31379413</div>
+              <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">Phone &amp; WhatsApp</div>
+              <a href="tel:{{PHONE}}" class="text-ink text-[18px] font-semibold hover:text-primary transition-colors block">{{PHONE_DISPLAY}}</a>
             </div>
           </div>
-
-          {{#WHATSAPP}}<div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            </div>
-            <div>
-              <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">WhatsApp</div>
-              <a href="https://wa.me/{{WHATSAPP}}" class="text-ink text-[18px] font-semibold hover:text-primary transition-colors block">{{WHATSAPP}}</a>
-            </div>
-          </div>{{/WHATSAPP}}
 
           {{#EMAIL}}<div class="sm:col-span-2 bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
             <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
@@ -58,17 +48,7 @@
             </div>
           </div>{{/EMAIL}}
 
-          <div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
-            <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 4.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 4.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-4.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-4.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z"/></svg>
-            </div>
-            <div>
-              <div class="text-muted-strong text-xs font-semibold uppercase tracking-wide mb-1.5">GSTIN</div>
-              <div class="text-ink text-[17px] font-medium">33AAJFF7540F1ZK</div>
-            </div>
-          </div>
-
-          <div class="bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
+          <div class="sm:col-span-2 bg-surface-card border border-hairline rounded-xl p-6 flex items-start gap-4">
             <div class="w-12 h-12 shrink-0 rounded-full bg-surface-strong flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
@@ -83,7 +63,7 @@
       <!-- Right column: form -->
       <div class="reveal" style="transition-delay:100ms">
         <div class="bg-surface-form text-body rounded-xl p-8 md:p-10 shadow-2xl">
-          <h3 class="text-ink text-[22px] font-bold mb-2">Request a Free Consultation</h3>
+          <h3 class="text-ink text-[22px] font-bold mb-2">Tell Us How We Can Help.</h3>
           <p class="text-muted text-[14px] mb-6">Fill this in and we'll pick up the conversation on WhatsApp.</p>
           <form id="whatsapp-form" class="space-y-5">
             <div>
@@ -99,18 +79,17 @@
               <select id="wa-service" class="w-full bg-white border border-hairline rounded-md px-4 py-3 text-[15px] text-ink focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
                 <option>Financial Planning</option>
                 <option>Mutual Funds</option>
-                <option>Retirement &amp; Tax Planning</option>
                 <option>Insurance</option>
-                <option>Loans</option>
-                <option>Real Estate</option>
-                <option>Debt Collection &amp; Recovery</option>
+                <option>Stocks - Market Insights</option>
+                <option>Commodities - Market Insights</option>
+                <option>Other Enquiry</option>
               </select>
             </div>
             <div>
               <label for="wa-message" class="block text-[13px] font-semibold text-ink mb-2">Message</label>
               <textarea id="wa-message" rows="4" class="w-full bg-white border border-hairline rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Tell us a little about what you need"></textarea>
             </div>
-            <button type="submit" class="w-full bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-md transition-colors">Send via WhatsApp</button>
+            <button type="submit" class="w-full bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-md transition-colors">Send Enquiry via WhatsApp</button>
           </form>
         </div>
       </div>
@@ -133,15 +112,6 @@
       </div>
     </div>
   </section>{{/GOOGLE_LINK}}
-
-  <!-- Closing quote -->
-  <section class="bg-canvas py-section">
-    <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal max-w-3xl mx-auto text-center">
-        <p class="text-ink text-[22px] md:text-[26px] font-semibold leading-[1.5]">"We're here for every stage of your financial journey - not just the one product you called about today."</p>
-      </div>
-    </div>
-  </section>
 
 <!-- MAIN-CONTENT-END -->
 
