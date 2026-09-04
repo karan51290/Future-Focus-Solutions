@@ -230,7 +230,6 @@ def mobile_nav(page_key, active_service=None):
 def render_shell(page_key, title, description, body, whatsapp_message, active_service=None):
     a = lambda k: rel(page_key, k)  # noqa: E731 - short alias, used heavily below
     logo_color = a("assets/logo/logo-color.png")
-    icon_color = a("assets/logo/icon-color.png")
     favicon = a("assets/logo/icon-color.png")
 
     wa_fab_text = urllib.parse.quote_plus(whatsapp_message)
@@ -308,8 +307,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 <header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas border-b border-hairline header-transition">
   <div class="max-w-[1280px] mx-auto w-full px-6 h-[88px] flex items-center justify-between">
     <a href="{a('home')}" class="flex items-center shrink-0">
-      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-14 md:h-16 w-auto hidden sm:block">
-      <img src="{icon_color}" alt="{BUSINESS['name']} logo" class="h-12 w-auto sm:hidden">
+      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-11 sm:h-14 md:h-16 w-auto">
     </a>
 
     <nav class="hidden lg:flex items-center gap-8">
