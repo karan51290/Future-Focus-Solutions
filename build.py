@@ -46,6 +46,8 @@ OUTPUT_PATHS = {
     "real-estate": "services/real-estate/index.html",
     "debt-collection-recovery": "services/debt-collection-recovery/index.html",
     "market-insights": "market-insights/index.html",
+    "market-insights-stocks": "market-insights/stocks/index.html",
+    "market-insights-commodities": "market-insights/commodities/index.html",
     "contact": "contact/index.html",
     "privacy-policy": "privacy-policy/index.html",
     "terms-and-conditions": "terms-and-conditions/index.html",
@@ -72,8 +74,8 @@ NAV_SERVICE_KEYS = [
 ]
 
 MARKET_INSIGHTS_ITEMS = [
-    ("stocks", "Stocks"),
-    ("commodities", "Commodities"),
+    ("market-insights-stocks", "Stocks"),
+    ("market-insights-commodities", "Commodities"),
 ]
 
 TOP_NAV = [
@@ -154,12 +156,12 @@ def fix_internal_paths(text, page_key):
 # ---------------------------------------------------------------------------
 # Nav rendering
 # ---------------------------------------------------------------------------
-def _dropdown(page_key, label, items, active_key, all_link=None, label_href=None):
+def _dropdown(page_key, label, items, active_key, all_link=None, label_href=None, all_link_label="All Services →"):
     """Shared renderer for the Services / Market Insights top-nav dropdowns.
     When label_href is given, the label itself is a clickable link to that
     page rather than an inert hover-only toggle."""
     btn_active = active_key is not None
-    btn_cls = "text-sm font-medium text-ink transition-colors flex items-center gap-1" if btn_active else "text-sm font-medium text-body hover:text-ink transition-colors flex items-center gap-1"
+    btn_cls = "text-sm font-semibold text-ink transition-colors flex items-center gap-1" if btn_active else "text-sm font-semibold text-body hover:text-ink transition-colors flex items-center gap-1"
     dropdown_items = []
     for ikey, ilabel in items:
         item_cls = "block px-5 py-2.5 text-sm text-primary font-semibold hover:bg-surface-strong transition-colors" if ikey == active_key else "block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors"
@@ -167,7 +169,7 @@ def _dropdown(page_key, label, items, active_key, all_link=None, label_href=None
     all_link_html = ""
     if all_link:
         all_link_html = f'''<div class="border-t border-hairline mt-2 pt-2">
-              <a href="{all_link}" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-strong transition-colors">All Services →</a>
+              <a href="{all_link}" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-strong transition-colors">{all_link_label}</a>
             </div>'''
     label_tag = f'<a href="{label_href}" class="{btn_cls}">' if label_href else f'<button class="{btn_cls}">'
     label_close = "</a>" if label_href else "</button>"
@@ -188,7 +190,7 @@ def _dropdown(page_key, label, items, active_key, all_link=None, label_href=None
 def desktop_nav(page_key, active_service=None):
     parts = []
     for key, label in TOP_NAV[:2]:  # Home, About Us
-        cls = "text-sm font-medium text-ink transition-colors" if key == page_key else "text-sm font-medium text-body hover:text-ink transition-colors"
+        cls = "text-sm font-semibold text-ink transition-colors" if key == page_key else "text-sm font-semibold text-body hover:text-ink transition-colors"
         parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
 
     services_active_href = rel(page_key, active_service) if active_service else None
@@ -197,12 +199,19 @@ def desktop_nav(page_key, active_service=None):
                             all_link=rel(page_key, 'services')))
 
     mi_base = rel(page_key, 'market-insights')
-    mi_items = [(f"{mi_base}#{ikey}", ilabel) for ikey, ilabel in MARKET_INSIGHTS_ITEMS]
-    mi_page_active = mi_base if page_key == "market-insights" else None
-    parts.append(_dropdown(page_key, "Market Insights", mi_items, mi_page_active, all_link=None, label_href=mi_base))
+    mi_items = [(rel(page_key, ikey), ilabel) for ikey, ilabel in MARKET_INSIGHTS_ITEMS]
+    if page_key == "market-insights":
+        mi_page_active = mi_base
+    elif page_key in dict(MARKET_INSIGHTS_ITEMS):
+        mi_page_active = rel(page_key, page_key)
+    else:
+        mi_page_active = None
+    parts.append(_dropdown(page_key, "Market Insights", mi_items, mi_page_active,
+                            all_link=rel(page_key, 'market-insights'), label_href=mi_base,
+                            all_link_label="All Market Insights →"))
 
     for key, label in TOP_NAV[2:]:  # Contact Us
-        cls = "text-sm font-medium text-ink transition-colors" if key == page_key else "text-sm font-medium text-body hover:text-ink transition-colors"
+        cls = "text-sm font-semibold text-ink transition-colors" if key == page_key else "text-sm font-semibold text-body hover:text-ink transition-colors"
         parts.append(f'<a href="{rel(page_key, key)}" class="{cls}">{label}</a>')
 
     return "\n      ".join(parts)
@@ -219,7 +228,8 @@ def mobile_nav(page_key, active_service=None):
     mi_base = rel(page_key, 'market-insights')
     parts.append(f'<a href="{mi_base}" class="mobile-link text-ink border-b border-hairline py-4">Market Insights</a>')
     for ikey, ilabel in MARKET_INSIGHTS_ITEMS:
-        parts.append(f'<a href="{mi_base}#{ikey}" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">{ilabel}</a>')
+        cls = "mobile-link text-primary font-semibold border-b border-hairline py-3 pl-4 text-sm" if ikey == page_key else "mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm"
+        parts.append(f'<a href="{rel(page_key, ikey)}" class="{cls}">{ilabel}</a>')
     parts.append(f'<a href="{rel(page_key, "contact")}" class="mobile-link text-ink border-b border-hairline py-4">Contact Us</a>')
     return "\n    ".join(parts)
 
@@ -291,7 +301,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 </head>
 <body class="bg-canvas text-body font-sans antialiased overflow-x-hidden">
 
-<div class="bg-surface-soft text-muted-strong text-[13px] hidden sm:block">
+<div class="bg-surface-soft text-muted-strong text-[13px] font-medium hidden sm:block">
   <div class="max-w-[1280px] mx-auto px-6 h-10 flex items-center justify-end gap-6">
     <a href="mailto:{BUSINESS['email']}" class="hover:text-primary transition-colors flex items-center gap-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6 12 13 2 6" stroke-width="2" fill="none"/><path d="M2 6h20v12H2z" fill="none" stroke-width="2"/></svg>
@@ -307,7 +317,7 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 <header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas border-b border-hairline header-transition">
   <div class="max-w-[1280px] mx-auto w-full px-6 h-[88px] flex items-center justify-between">
     <a href="{a('home')}" class="flex items-center shrink-0">
-      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-11 sm:h-14 md:h-16 w-auto">
+      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-14 sm:h-16 md:h-20 w-auto">
     </a>
 
     <nav class="hidden lg:flex items-center gap-8">
@@ -344,11 +354,11 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
 </main>
 
 <footer class="bg-surface-soft text-body">
-  <div class="max-w-[1280px] mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+  <div class="max-w-[1280px] mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-5 gap-8">
     <div class="col-span-2 flex flex-col justify-between">
-      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-20 md:h-24 w-auto self-start">
+      <img src="{logo_color}" alt="{BUSINESS['name']} logo" class="h-14 md:h-16 w-auto self-start">
       <div>
-        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-6">{BUSINESS['name']} helps individuals and families approach their financial planning, mutual fund and insurance decisions with greater clarity and confidence.</p>
+        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-4">{BUSINESS['name']} helps individuals and families approach their financial planning, mutual fund and insurance decisions with greater clarity and confidence.</p>
         <div class="flex gap-4">
           <a href="{BUSINESS['social']['facebook']}" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
           <a href="{BUSINESS['social']['instagram']}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -356,8 +366,8 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
       </div>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4 text-ink">Quick Links</h4>
-      <ul class="space-y-3">
+      <h4 class="font-semibold text-[14px] mb-3 text-ink">Quick Links</h4>
+      <ul class="space-y-2">
         <li><a href="{a('about')}" class="text-[13px] text-muted hover:text-emerald transition-colors">About Us</a></li>
         <li><a href="{a('services')}" class="text-[13px] text-muted hover:text-emerald transition-colors">Services</a></li>
         <li><a href="{a('market-insights')}" class="text-[13px] text-muted hover:text-emerald transition-colors">Market Insights</a></li>
@@ -365,27 +375,27 @@ def render_shell(page_key, title, description, body, whatsapp_message, active_se
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4 text-ink">Services</h4>
-      <ul class="space-y-3">
+      <h4 class="font-semibold text-[14px] mb-3 text-ink">Services</h4>
+      <ul class="space-y-2">
         {''.join(f'<li><a href="{a(skey)}" class="text-[13px] text-muted hover:text-emerald transition-colors">{slabel}</a></li>' for skey, slabel in NAV_SERVICE_KEYS)}
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4 text-ink">Contact</h4>
-      <ul class="space-y-3 text-[13px] text-muted leading-[1.6]">
-        <li>{BUSINESS['name']}</li>
+      <h4 class="font-semibold text-[14px] mb-3 text-ink">Contact</h4>
+      <ul class="space-y-2 text-[13px] text-muted leading-[1.5]">
+        <li class="text-ink font-semibold text-[15px]">{BUSINESS['name']}</li>
         <li>{BUSINESS['address']}</li>
-        <li><a href="tel:{BUSINESS['phoneTel']}" class="hover:text-emerald transition-colors">{BUSINESS['phone']}</a></li>
-        <li>WhatsApp: <a href="https://wa.me/{BUSINESS['whatsappNumber']}" class="hover:text-emerald transition-colors">{BUSINESS['whatsappDisplay']}</a></li>
+        <li class="flex items-center gap-3 pt-1">
+          <a href="tel:{BUSINESS['phoneTel']}" aria-label="Call {BUSINESS['phone']}" class="hover:text-emerald transition-colors"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+          <a href="https://wa.me/{BUSINESS['whatsappNumber']}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp {BUSINESS['whatsappDisplay']}" class="hover:text-emerald transition-colors"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+          <a href="tel:{BUSINESS['phoneTel']}" class="hover:text-emerald transition-colors">{BUSINESS['phone']}</a>
+        </li>
         <li><a href="mailto:{BUSINESS['email']}" class="hover:text-emerald transition-colors">{BUSINESS['email']}</a></li>
       </ul>
     </div>
   </div>
-  <div class="max-w-[1280px] mx-auto px-6 pb-8">
-    <div class="pt-6 pb-6 border-t border-hairline text-[12px] text-muted leading-[1.6]">
-      <p>The information provided on this website is intended for general informational purposes only and should not be considered personalised financial, investment, legal, tax or insurance advice. Financial decisions should be made after considering individual circumstances, objectives and requirements. All financial products and services are subject to their respective terms, conditions, eligibility criteria and applicable risks.</p>
-    </div>
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline text-[12px] text-muted">
+  <div class="max-w-[1280px] mx-auto px-6 pb-6">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-5 border-t border-hairline text-[12px] text-muted">
       <p>© {BUSINESS['name']} {BUSINESS['copyrightYear']}. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="{a('privacy-policy')}" class="hover:text-emerald transition-colors">Privacy Policy</a>
@@ -480,6 +490,12 @@ PAGES = [
     ("market-insights", f"Market Insights - {BUSINESS['name']}",
      "Stocks and commodities - what's moving, in plain language.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),
+    ("market-insights-stocks", f"Stocks - Market Insights - {BUSINESS['name']}",
+     "Technical perspectives and observations on selected stocks and market movements.",
+     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Stocks - Market Insights.", None),
+    ("market-insights-commodities", f"Commodities - Market Insights - {BUSINESS['name']}",
+     "Technical perspectives and observations on selected commodity markets.",
+     f"Hi {BUSINESS['name']}! I'd like to talk to someone about Commodities - Market Insights.", None),
     ("contact", f"Contact Us - {BUSINESS['name']}",
      "One free consultation. Tell us what you're trying to solve.",
      f"Hi {BUSINESS['name']}! I'd like to talk to someone.", None),

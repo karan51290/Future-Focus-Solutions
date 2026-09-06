@@ -54,7 +54,7 @@
 </head>
 <body class="bg-canvas text-body font-sans antialiased overflow-x-hidden">
 
-<div class="bg-surface-soft text-muted-strong text-[13px] hidden sm:block">
+<div class="bg-surface-soft text-muted-strong text-[13px] font-medium hidden sm:block">
   <div class="max-w-[1280px] mx-auto px-6 h-10 flex items-center justify-end gap-6">
     <a href="mailto:support@futurefocussolutions.in" class="hover:text-primary transition-colors flex items-center gap-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6 12 13 2 6" stroke-width="2" fill="none"/><path d="M2 6h20v12H2z" fill="none" stroke-width="2"/></svg>
@@ -70,14 +70,14 @@
 <header id="main-header" class="sticky top-0 left-0 w-full z-50 bg-canvas border-b border-hairline header-transition">
   <div class="max-w-[1280px] mx-auto w-full px-6 h-[88px] flex items-center justify-between">
     <a href="../index.html" class="flex items-center shrink-0">
-      <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-11 sm:h-14 md:h-16 w-auto">
+      <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-14 sm:h-16 md:h-20 w-auto">
     </a>
 
     <nav class="hidden lg:flex items-center gap-8">
-      <a href="../index.html" class="text-sm font-medium text-body hover:text-ink transition-colors">Home</a>
-      <a href="../about/index.html" class="text-sm font-medium text-body hover:text-ink transition-colors">About Us</a>
+      <a href="../index.html" class="text-sm font-semibold text-body hover:text-ink transition-colors">Home</a>
+      <a href="../about/index.html" class="text-sm font-semibold text-body hover:text-ink transition-colors">About Us</a>
       <div class="relative group">
-        <button class="text-sm font-medium text-body hover:text-ink transition-colors flex items-center gap-1">
+        <button class="text-sm font-semibold text-body hover:text-ink transition-colors flex items-center gap-1">
           Services
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
         </button>
@@ -91,18 +91,20 @@
         </div>
       </div>
       <div class="relative group">
-        <a href="index.html" class="text-sm font-medium text-ink transition-colors flex items-center gap-1">
+        <a href="index.html" class="text-sm font-semibold text-ink transition-colors flex items-center gap-1">
           Market Insights
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
         </a>
         <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
           <div class="bg-surface-card border border-hairline rounded-xl shadow-2xl py-2 w-64">
-            <a href="index.html#stocks" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Stocks</a><a href="index.html#commodities" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Commodities</a>
-            
+            <a href="stocks/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Stocks</a><a href="commodities/index.html" class="block px-5 py-2.5 text-sm text-body hover:bg-surface-strong hover:text-ink transition-colors">Commodities</a>
+            <div class="border-t border-hairline mt-2 pt-2">
+              <a href="index.html" class="block px-5 py-2.5 text-sm font-semibold text-primary hover:bg-surface-strong transition-colors">All Market Insights →</a>
+            </div>
           </div>
         </div>
       </div>
-      <a href="../contact/index.html" class="text-sm font-medium text-body hover:text-ink transition-colors">Contact Us</a>
+      <a href="../contact/index.html" class="text-sm font-semibold text-body hover:text-ink transition-colors">Contact Us</a>
     </nav>
 
     <div class="flex items-center gap-4">
@@ -131,8 +133,8 @@
     <a href="../services/mutual-funds/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Mutual Funds</a>
     <a href="../services/insurance/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Insurance</a>
     <a href="index.html" class="mobile-link text-ink border-b border-hairline py-4">Market Insights</a>
-    <a href="index.html#stocks" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Stocks</a>
-    <a href="index.html#commodities" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Commodities</a>
+    <a href="stocks/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Stocks</a>
+    <a href="commodities/index.html" class="mobile-link text-muted-strong border-b border-hairline py-3 pl-4 text-sm">Commodities</a>
     <a href="../contact/index.html" class="mobile-link text-ink border-b border-hairline py-4">Contact Us</a>
     <a href="../contact/index.html" class="mobile-link bg-primary text-on-primary font-semibold text-center rounded-md py-3.5 mt-6">Book a Free Consultation</a>
     <a href="tel:+919514691915" class="mobile-link text-primary mt-6 font-semibold text-center">+91 95146 91915</a>
@@ -162,87 +164,26 @@
     </div>
   </section>
 
-  <!-- Stocks -->
-  <section id="stocks" class="bg-canvas border-b border-hairline py-section scroll-mt-24">
+  <!-- Pick a market -->
+  <section class="bg-canvas py-section border-b border-hairline">
     <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal mb-8">
-        <h2 class="text-ink text-[28px] md:text-[32px] font-display font-medium mb-4">Stocks</h2>
-        <p class="text-body text-[16px] md:text-[17px] leading-[1.7] max-w-3xl">Share prices move on company earnings, interest rates, and broader economic sentiment - not on any single headline. Understanding the difference between short-term noise and what actually matters is most of the battle.</p>
-      </div>
-      <p class="reveal text-body text-[15px] leading-[1.6] mb-4 max-w-3xl">Our stock market insights may include observations relating to:</p>
-      <ul class="space-y-3 max-w-3xl">
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Price trends</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Support and resistance levels</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Market momentum</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Chart patterns</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Technical indicators</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Commodities -->
-  <section id="commodities" class="bg-surface-card border-b border-hairline py-section scroll-mt-24">
-    <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal mb-8">
-        <h2 class="text-ink text-[28px] md:text-[32px] font-display font-medium mb-4">Commodities</h2>
-        <p class="text-body text-[16px] md:text-[17px] leading-[1.7] max-w-3xl">Gold, silver, and other commodities play a different role in a portfolio than stocks or funds do - and a much bigger role in most Indian households than people usually account for when they plan.</p>
-      </div>
-      <p class="reveal text-body text-[15px] leading-[1.6] mb-4 max-w-3xl">Our commodity insights may include observations relating to:</p>
-      <ul class="space-y-3 max-w-3xl">
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Price movements</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Market trends</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Technical levels</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Market momentum</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Chart patterns</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Important Disclaimer -->
-  <section class="bg-canvas border-b border-hairline py-section">
-    <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal max-w-3xl mx-auto bg-surface-card border border-primary/50 rounded-xl p-6 md:p-8 flex flex-col items-center text-center">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FBBE07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mb-3"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
-        <div>
-          <h3 class="text-ink text-[16px] font-semibold mb-3">Important Disclaimer</h3>
-          <p class="text-body text-[14px] leading-[1.7] mb-3">The information, technical analysis, charts, market observations and views published under Market Insights are provided solely for informational and educational purposes.</p>
-          <p class="text-body text-[14px] leading-[1.7] mb-3">The content represents technical perspectives based on market observations at a particular point in time and may change without notice.</p>
-          <p class="text-body text-[14px] leading-[1.7] mb-3">Nothing published under Market Insights should be considered as investment advice, financial advice, a recommendation, a research recommendation, a trading call or a solicitation to buy or sell any stock, commodity or other financial instrument.</p>
-          <p class="text-body text-[14px] leading-[1.7] mb-3">The mention or analysis of any stock, commodity, market level or technical pattern does not constitute a recommendation to buy, sell or hold that instrument.</p>
-          <p class="text-body text-[14px] leading-[1.7] mb-3">Financial markets involve risk and prices can fluctuate significantly. Past market performance and historical price movements are not reliable indicators of future performance.</p>
-          <p class="text-body text-[14px] leading-[1.7] mb-3">Readers should conduct their own research and consider their individual financial circumstances, investment objectives and risk tolerance before making any financial decision.</p>
-          <p class="text-body text-[14px] leading-[1.7]">Future Focus Solutions shall not be responsible for any financial loss or damage arising from decisions made based solely on information published under Market Insights.</p>
-        </div>
+      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <a href="stocks/index.html" class="reveal group bg-surface-card border border-hairline rounded-xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-xl hover:border-primary/30">
+          <div class="w-12 h-12 rounded-full bg-surface-strong flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          </div>
+          <h2 class="text-ink text-[20px] font-semibold mb-3">Stocks</h2>
+          <p class="text-body text-[14px] leading-[1.6] mb-5">Technical perspectives on selected stocks and market movements.</p>
+          <span class="mt-auto text-primary text-sm font-semibold inline-flex items-center gap-1">Explore Stock Insights <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a href="commodities/index.html" class="reveal group bg-surface-card border border-hairline rounded-xl p-8 flex flex-col transition-all hover:-translate-y-1 hover:shadow-xl hover:border-primary/30" style="transition-delay:80ms">
+          <div class="w-12 h-12 rounded-full bg-surface-strong flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h2 class="text-ink text-[20px] font-semibold mb-3">Commodities</h2>
+          <p class="text-body text-[14px] leading-[1.6] mb-5">Technical perspectives and observations on selected commodity markets.</p>
+          <span class="mt-auto text-primary text-sm font-semibold inline-flex items-center gap-1">Explore Commodity Insights <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -255,7 +196,7 @@
           <h2 class="text-ink text-[26px] md:text-[32px] font-display font-medium leading-[1.2] mb-3">Explore Market Perspectives.</h2>
           <p class="text-body text-[16px]">Want to know how markets fit into your own plan? Book a free consultation with our team.</p>
         </div>
-        <a href="../contact/index.html" class="shrink-0 bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-full transition-colors">Contact Us</a>
+        <a href="../contact/index.html" class="shrink-0 bg-primary hover:bg-primary-active text-on-primary font-semibold text-sm px-8 py-4 rounded-full transition-colors">Book a Free Consultation</a>
       </div>
     </div>
   </section>
@@ -263,11 +204,11 @@
 </main>
 
 <footer class="bg-surface-soft text-body">
-  <div class="max-w-[1280px] mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
+  <div class="max-w-[1280px] mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-5 gap-8">
     <div class="col-span-2 flex flex-col justify-between">
-      <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-20 md:h-24 w-auto self-start">
+      <img src="../assets/logo/logo-color.png" alt="Future Focus Solutions logo" class="h-14 md:h-16 w-auto self-start">
       <div>
-        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-6">Future Focus Solutions helps individuals and families approach their financial planning, mutual fund and insurance decisions with greater clarity and confidence.</p>
+        <p class="text-[13px] text-muted max-w-sm leading-[1.6] mb-4">Future Focus Solutions helps individuals and families approach their financial planning, mutual fund and insurance decisions with greater clarity and confidence.</p>
         <div class="flex gap-4">
           <a href="https://www.facebook.com/people/Futurefocus-Solutions/61560132209162/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
           <a href="https://www.instagram.com/futurefocussolutions_1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-strong flex items-center justify-center text-ink hover:bg-primary hover:text-on-primary transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -275,8 +216,8 @@
       </div>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4 text-ink">Quick Links</h4>
-      <ul class="space-y-3">
+      <h4 class="font-semibold text-[14px] mb-3 text-ink">Quick Links</h4>
+      <ul class="space-y-2">
         <li><a href="../about/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">About Us</a></li>
         <li><a href="../services/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Services</a></li>
         <li><a href="index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Market Insights</a></li>
@@ -284,27 +225,27 @@
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4 text-ink">Services</h4>
-      <ul class="space-y-3">
+      <h4 class="font-semibold text-[14px] mb-3 text-ink">Services</h4>
+      <ul class="space-y-2">
         <li><a href="../services/financial-planning/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Financial Planning</a></li><li><a href="../services/mutual-funds/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Mutual Funds</a></li><li><a href="../services/insurance/index.html" class="text-[13px] text-muted hover:text-emerald transition-colors">Insurance</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-[14px] mb-4 text-ink">Contact</h4>
-      <ul class="space-y-3 text-[13px] text-muted leading-[1.6]">
-        <li>Future Focus Solutions</li>
-        <li>No. 22, Shanmuga Nagar Salai, Choolaimedu, Chennai – 600 094, Tamil Nadu, India</li>
-        <li><a href="tel:+919514691915" class="hover:text-emerald transition-colors">+91 95146 91915</a></li>
-        <li>WhatsApp: <a href="https://wa.me/919514691915" class="hover:text-emerald transition-colors">+91 95146 91915</a></li>
+      <h4 class="font-semibold text-[14px] mb-3 text-ink">Contact</h4>
+      <ul class="space-y-2 text-[13px] text-muted leading-[1.5]">
+        <li class="text-ink font-semibold text-[15px]">Future Focus Solutions</li>
+        <li>No. 22, Shanmuganar Salai, Choolaimedu, Chennai – 600 094, Tamil Nadu, India</li>
+        <li class="flex items-center gap-3 pt-1">
+          <a href="tel:+919514691915" aria-label="Call +91 95146 91915" class="hover:text-emerald transition-colors"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+          <a href="https://wa.me/919514691915" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 95146 91915" class="hover:text-emerald transition-colors"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+          <a href="tel:+919514691915" class="hover:text-emerald transition-colors">+91 95146 91915</a>
+        </li>
         <li><a href="mailto:support@futurefocussolutions.in" class="hover:text-emerald transition-colors">support@futurefocussolutions.in</a></li>
       </ul>
     </div>
   </div>
-  <div class="max-w-[1280px] mx-auto px-6 pb-8">
-    <div class="pt-6 pb-6 border-t border-hairline text-[12px] text-muted leading-[1.6]">
-      <p>The information provided on this website is intended for general informational purposes only and should not be considered personalised financial, investment, legal, tax or insurance advice. Financial decisions should be made after considering individual circumstances, objectives and requirements. All financial products and services are subject to their respective terms, conditions, eligibility criteria and applicable risks.</p>
-    </div>
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-hairline text-[12px] text-muted">
+  <div class="max-w-[1280px] mx-auto px-6 pb-6">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-5 border-t border-hairline text-[12px] text-muted">
       <p>© Future Focus Solutions 2026. All rights reserved.</p>
       <div class="flex gap-6">
         <a href="../privacy-policy/index.html" class="hover:text-emerald transition-colors">Privacy Policy</a>

@@ -2,8 +2,8 @@
 window.FFS_BUSINESS = {
   "name": "Future Focus Solutions",
   "tagline": "Invest . Protect . Prosper",
-  "address": "No. 22, Shanmuga Nagar Salai, Choolaimedu, Chennai – 600 094, Tamil Nadu, India",
-  "googleMapsQuery": "No.+22,+Shanmuga+Nagar+Salai,+Choolaimedu,+Chennai+600094",
+  "address": "No. 22, Shanmuganar Salai, Choolaimedu, Chennai – 600 094, Tamil Nadu, India",
+  "googleMapsQuery": "No.+22,+Shanmuganar+Salai,+Choolaimedu,+Chennai+600094",
   "phone": "+91 95146 91915",
   "phoneTel": "+919514691915",
   "fax": "91-44-31379413",
@@ -17,5 +17,5 @@ window.FFS_BUSINESS = {
     "instagram": "https://www.instagram.com/futurefocussolutions_1/"
   },
   "copyrightYear": 2026,
-  "googleLink": "https://www.google.com/maps/search/?api=1&query=No.+22%2C+Shanmuga+Nagar+Salai%2C+Choolaimedu%2C+Chennai+%E2%80%93+600+094%2C+Tamil+Nadu%2C+India"
+  "googleLink": "https://www.google.com/maps/search/?api=1&query=No.+22%2C+Shanmuganar+Salai%2C+Choolaimedu%2C+Chennai+%E2%80%93+600+094%2C+Tamil+Nadu%2C+India"
 };
