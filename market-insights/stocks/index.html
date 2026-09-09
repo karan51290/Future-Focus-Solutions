@@ -150,42 +150,64 @@
         <h1 class="text-ink text-[42px] md:text-[56px] font-display font-medium leading-[1.15] mb-4">Stocks</h1>
         <p class="text-body text-[18px] md:text-[20px] leading-[1.6] max-w-3xl">Plain-language context on share prices - not tips, not predictions.</p>
       </div>
-      <div class="reveal bg-surface-card border border-hairline rounded-xl p-8 md:p-10 italic" style="transition-delay:80ms">
+      <div class="reveal bg-surface-card border border-hairline rounded-xl p-8 md:p-10 flex gap-5" style="transition-delay:80ms">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M3 21c3-6 6-9 9-9s6 3 9 9M8 6l4-4 4 4M12 2v13"/></svg>
         <p class="text-body text-[16px] md:text-[17px] leading-[1.7] text-ink">We're not going to tell you which stock to buy or predict where the market is headed next month - anyone who does that with certainty is guessing. What we can do is help you understand how the stock market actually works, so market news makes sense instead of feeling like noise, and so it informs your plan instead of your panic.</p>
       </div>
     </div>
   </section>
 
-  <!-- Stocks -->
+  <!-- Hero Image -->
   <section class="bg-surface-card border-b border-hairline py-section">
     <div class="max-w-[1280px] mx-auto px-6">
-      <div class="reveal mb-8">
+      <div class="reveal aspect-[16/9] rounded-xl overflow-hidden shadow-xl relative">
+        <img src="../../assets/images/market-insights-stocks.jpg" alt="Photo by Markus Winkler on Unsplash - Stock market chart displayed on a laptop screen" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 bg-canvas-light/95 backdrop-blur-sm px-5 py-3 rounded-xl border border-hairline shadow-xl text-sm font-semibold text-ink">NSE &middot; BSE &middot; Global Indices</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stocks -->
+  <section class="bg-canvas border-b border-hairline py-section">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div class="reveal mb-10">
         <h2 class="text-ink text-[28px] md:text-[32px] font-display font-medium mb-4">How We Look at Stocks.</h2>
         <p class="text-body text-[16px] md:text-[17px] leading-[1.7] max-w-3xl">Share prices move on company earnings, interest rates, and broader economic sentiment - not on any single headline. Understanding the difference between short-term noise and what actually matters is most of the battle.</p>
       </div>
-      <p class="reveal text-body text-[15px] leading-[1.6] mb-4 max-w-3xl">Our stock market insights may include observations relating to:</p>
-      <ul class="space-y-3 max-w-3xl">
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Price trends</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Support and resistance levels</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Market momentum</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Chart patterns</span>
-        </li>
-        <li class="flex gap-3 text-body text-[15px] md:text-[16px] leading-[1.6]">
-          <span class="text-primary font-bold flex-shrink-0">&bull;</span>
-          <span>Technical indicators</span>
-        </li>
-      </ul>
+      <p class="reveal text-body text-[15px] leading-[1.6] mb-6 max-w-3xl">Our stock market insights may include observations relating to:</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="reveal bg-surface-card border border-hairline rounded-xl p-6 flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full bg-surface-strong flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          </div>
+          <span class="text-ink text-[15px] font-semibold">Price trends</span>
+        </div>
+        <div class="reveal bg-surface-card border border-hairline rounded-xl p-6 flex items-center gap-4" style="transition-delay:40ms">
+          <div class="w-11 h-11 rounded-full bg-surface-strong flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><circle cx="8" cy="8" r="1.5" fill="#04442C" stroke="none"/><circle cx="16" cy="16" r="1.5" fill="#04442C" stroke="none"/></svg>
+          </div>
+          <span class="text-ink text-[15px] font-semibold">Support &amp; resistance levels</span>
+        </div>
+        <div class="reveal bg-surface-card border border-hairline rounded-xl p-6 flex items-center gap-4" style="transition-delay:80ms">
+          <div class="w-11 h-11 rounded-full bg-surface-strong flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <span class="text-ink text-[15px] font-semibold">Market momentum</span>
+        </div>
+        <div class="reveal bg-surface-card border border-hairline rounded-xl p-6 flex items-center gap-4" style="transition-delay:120ms">
+          <div class="w-11 h-11 rounded-full bg-surface-strong flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="4" height="8" rx="1"/><rect x="15" y="4" width="4" height="13" rx="1"/><path d="M7 9V6M17 4V3"/></svg>
+          </div>
+          <span class="text-ink text-[15px] font-semibold">Chart patterns</span>
+        </div>
+        <div class="reveal bg-surface-card border border-hairline rounded-xl p-6 flex items-center gap-4" style="transition-delay:160ms">
+          <div class="w-11 h-11 rounded-full bg-surface-strong flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04442C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V14M4 10V3M12 21v-8M12 9V3M20 21v-4M20 13V3M2 14h4M10 9h4M18 13h4"/></svg>
+          </div>
+          <span class="text-ink text-[15px] font-semibold">Technical indicators</span>
+        </div>
+      </div>
     </div>
   </section>
 
